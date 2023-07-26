@@ -17,7 +17,7 @@ import Button from '@mui/material/Button';
 import { NavLink } from 'react-router-dom';
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
+const navItems = ['Sign Up', 'Login', 'Create Routine', 'View Routines'];
 
 function DrawerAppBar(props) {
   const { window } = props;
@@ -28,15 +28,15 @@ function DrawerAppBar(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', color: 'black', }}>
+      <Typography variant="h6" sx={{ my: 2, textAlign: 'left', color: 'black' }}>
         Stay Fit App
       </Typography>
       <Divider />
-      <List>
+      <List  >
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
+            <ListItemButton sx={{ textAlign: 'center', color: 'black', fontWeight: '800', }}>
               <NavLink
                 to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
                 style={{
@@ -47,7 +47,7 @@ function DrawerAppBar(props) {
                   display: 'block',      // Optional: Make the NavLink a block element to take full width
                 }}
               >
-                <ListItemText primary={item} />
+                <ListItemText  primary={item} />
               </NavLink>
             </ListItemButton>
           </ListItem>
@@ -59,9 +59,9 @@ function DrawerAppBar(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', height: '20px' }}>
       <CssBaseline />
-      <AppBar component="nav" style={{ background: '#2E3B55' }}>
+      <AppBar component="nav" style={{ background: 'white', color: 'black', fontWeight: '600' }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -75,23 +75,23 @@ function DrawerAppBar(props) {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, textAlign: 'left' }}
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, textAlign: 'left', fontWeight: '600' }}
           >
             Stay Fit App
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <NavLink
-                key={item}
-                to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-              >
-                <Button sx={{ color: '#fff' }}>
-                  {item}
-                </Button>
-              </NavLink>
-
-
-            ))}
+            <NavLink to={'/signup'}>
+              <Button sx={{ color: 'black', fontWeight: '600' }}>Sign Up</Button>
+            </NavLink>
+            <NavLink to={'/login'}>
+              <Button sx={{ color: 'black', fontWeight: '600' }}>Log In</Button>
+            </NavLink>
+            <NavLink to={'/workouts/create'}>
+              <Button sx={{ color: 'black', fontWeight: '600' }}>New Workout</Button>
+            </NavLink>
+            <NavLink to={'/workouts'}>
+              <Button sx={{ color: 'black', fontWeight: '600' }}>See Workouts</Button>
+            </NavLink>
           </Box>
         </Toolbar>
       </AppBar>
