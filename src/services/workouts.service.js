@@ -20,32 +20,32 @@ class WorkoutsService {
   }
 
   // POST /api/projects
-  createProject = requestBody => {
-    return this.api.post('/api/projects', requestBody);
+  createWorkout = requestBody => {
+    return this.api.post('/api/workouts', requestBody);
   };
 
-  // GET /api/projects
-  getAllProjects = () => {
-    return this.api.get('/api/projects');
+  // GET /api/workouts
+  getAllWorkouts = () => {
+    return this.api.get('/api/workouts');
   };
 
-  // GET /api/projects/:id
-  getProject = id => {
-    return this.api.get(`/api/projects/${id}`);
+  // GET /api/workouts/:id
+  getWorkout = id => {
+    return this.api.get(`/api/workouts/${id}`);
   };
 
-  // PUT /api/projects/:id
-  updateProject = (id, requestBody) => {
-    return this.api.put(`/api/projects/${id}`, requestBody);
+  // PUT /api/workouts/:id
+  updateWorkout = (id, requestBody) => {
+    return this.api.put(`/api/workouts/${id}`, requestBody);
   };
 
-  // DELETE /api/projects/:id
-  deleteProject = id => {
-    return this.api.delete(`/api/projects/${id}`);
+  // DELETE /api/workouts/:id
+  deleteWorkout = id => {
+    return this.api.delete(`/api/workouts/${id}`);
   };
 }
 
 // Create one instance object
-const projectsService = new WorkoutsService();
+const workoutsService = new WorkoutsService();
 
-export default projectsService;
+export default workoutsService;

@@ -22,6 +22,7 @@ const drawerWidth = 240;
 const navItems = ['Sign Up', 'Login', 'Create Routine', 'View Routines'];
 
 function DrawerAppBar(props) {
+
   const { 
     isLoggedIn,
     user,                  
@@ -134,7 +135,7 @@ function DrawerAppBar(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex', height: '100%' }}>
+    <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar component="nav" style={{ background: 'white', color: 'black', fontWeight: '600' }}>
         <Toolbar>
@@ -152,7 +153,15 @@ function DrawerAppBar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, textAlign: 'left', fontWeight: '600' }}
           >
-            Stay Fit App
+            <NavLink 
+              to={'/'} 
+              style={{
+                color: 'black',
+                textDecoration: 'none', // Remove default hyperlink styling
+              }}
+              >
+              Stay Fit App
+            </NavLink>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             
@@ -206,7 +215,7 @@ function DrawerAppBar(props) {
         <Toolbar />
       </Box>
     </Box>
-    
+
   );
 }
 
