@@ -22,7 +22,11 @@ const drawerWidth = 240;
 const navItems = ['Sign Up', 'Login', 'Create Routine', 'View Routines'];
 
 function DrawerAppBar(props) {
-  const { isLoggedIn, user } = useContext(AuthContext);
+  const { 
+    isLoggedIn,
+    user,                  
+    logOutUser              
+  } = useContext(AuthContext);
 
 
   const { window } = props;
@@ -115,19 +119,9 @@ function DrawerAppBar(props) {
         </ListItem>
 
         <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: 'center', color: 'black', fontWeight: '800', }}>
-            <NavLink
-              to={'/logout'}
-              style={{
-                color: 'black',
-                textDecoration: 'none', // Remove default hyperlink styling
-                textAlign: 'center',   // Center the text
-                width: '100%',         // Optional: Set the width to take full width of the ListItemButton
-                display: 'block',      // Optional: Make the NavLink a block element to take full width
-              }}
-            >
-              <ListItemText>Logout</ListItemText>
-            </NavLink>
+          <ListItemButton sx={{ textAlign: 'center', color: 'black', fontWeight: '800', }}>   
+            <ListItemText onClick={logOutUser}>Logout</ListItemText>
+            <span>{user && user.name}</span>
           </ListItemButton>
         </ListItem>
         </>
@@ -181,9 +175,9 @@ function DrawerAppBar(props) {
               <NavLink to={'/workouts'}>
                 <Button sx={{ color: 'black', fontWeight: '600' }}>See Workouts</Button>
               </NavLink>
-              <NavLink to={'/logout'}>
-                <Button sx={{ color: 'black', fontWeight: '600' }}>Logout</Button>
-              </NavLink>
+        
+              <Button sx={{ color: 'black', fontWeight: '600' }} onClick={logOutUser}>Logout</Button>
+              <span>{user && user.name}</span>
               </>
             )}
 
