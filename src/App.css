@@ -40,3 +40,78 @@
 .css-k008qs {
   height: 2.8rem;
 }
+
+body {
+  font-weight: 800;
+}
+
+#workout-form-cnt {
+  position: relative;
+  height: 100vh;
+  background-color: bisque;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#workout-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+}
+
+#workout-form label {
+  font-weight: bold;
+}
+
+#workout-form > button {
+  margin-top: 25px;
+}
+
+#workout-form button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#workout-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Style the date input */
+input[type="date"] {
+  /* Reset default styles */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  /* Optional: Add box-shadow or other styles */
+}
+
+/* Style the date input's dropdown arrow (for browsers that support custom styling) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  /* Your custom styles for the arrow */
+  color: #007bff; /* Example: change the color of the arrow */
+  /* You can also use background-image to add your custom arrow icon */
+}
+
+/* Style the date input placeholder text (optional) */
+input[type="date"]::placeholder {
+  color: #999; /* Example: change the color of the placeholder text */
+}

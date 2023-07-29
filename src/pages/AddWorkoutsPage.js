@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react';
 import workoutsService from '../services/workouts.service';
 
 export default function AddWorkoutsPage() {
-    const [workouts, setWorkouts] = useState();
-    const [date, setDate] = useState();
-    const [exercises, setExercises] = useState([])
+    const [workout, setWorkout] = useState({
+      date: '',
+      exercises: [],
+      apiExercises: [] //pass in id's from API/
+    });
 
     useEffect(() => {
         workoutsService.getAllWorkouts()
@@ -16,21 +18,45 @@ export default function AddWorkoutsPage() {
 
       }, [])
 
+      const handleChange = (event) => {
+        event.preventDefault();
+
+        setWorkout({
+          ...workout, 
+          [event.target.name]: event.target.value
+        })
+      }
+
       const handleSubmit = (e) => {
         e.preventDefault();
-        const requestBody = { date, exercises };
+        const requestBody = { workout };
 
         // Send the token through the request "Authorization" Headers
         workoutsService.createWorkout(requestBody)
           .then((response) => {
           // Reset the state
-          setDate("");
-          setExercises([]);
-        })
+            setWorkout({
+              date: '',
+              exercises: [],
+              apiExercises: []
+            })
+          })
           .catch((error) => console.log(error));
       };
 
-  return (
-    <div>Workouts</div>
-  )
+      return (
+        <div id='workout-form-cnt'>
+          <form id='workout-form' onSubmit={handleSubmit}>
+            <label>Select Date: </label>
+            <input 
+              type="date"
+              name="date"
+              value={workout.date}
+              onChange={handleChange}
+            />
+            <br />
+            <button type="submit">Create Workout</button>
+          </form>
+        </div>
+      )
 }
