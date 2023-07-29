@@ -134,7 +134,7 @@ function DrawerAppBar(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex', height: '20px' }}>
+    <Box sx={{ display: 'flex', height: '100%' }}>
       <CssBaseline />
       <AppBar component="nav" style={{ background: 'white', color: 'black', fontWeight: '600' }}>
         <Toolbar>
@@ -184,6 +184,7 @@ function DrawerAppBar(props) {
           </Box>
         </Toolbar>
       </AppBar>
+
       <Box component="nav">
         <Drawer
           container={container}
@@ -205,6 +206,7 @@ function DrawerAppBar(props) {
         <Toolbar />
       </Box>
     </Box>
+    
   );
 }
 
