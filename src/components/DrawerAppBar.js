@@ -19,7 +19,6 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
 const drawerWidth = 240;
-const navItems = ['Sign Up', 'Login', 'Create Routine', 'View Routines'];
 
 function DrawerAppBar(props) {
 
