@@ -1,17 +1,19 @@
 import { createContext, useState } from "react";
 import workoutsService from "../services/workouts.service";
+import { useNavigate } from "react-router-dom";
 
 const WorkoutContext = createContext();
 
 // every context should have a provider. This is what provides the child elements with shared values which helps avoid prop drilling and unneeded state lifting.
 export const WorkoutProvider = ({ children }) => {
 	const [workouts, setWorkouts] = useState([]);
+	const navigate = useNavigate();
 
 	const handleWorkoutSubmit = (formData) => {
 			workoutsService.createWorkout(formData)
 			.then((res) => {
-				console.log({ create: res.data });
 				setWorkouts([...workouts, res.data.workouts]);
+				navigate("/workouts");
 			})
 			.catch((err) => console.log({ err }));
 	};

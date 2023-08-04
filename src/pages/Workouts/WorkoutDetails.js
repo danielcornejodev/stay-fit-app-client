@@ -19,9 +19,13 @@ export default function WorkoutDetails() {
   console.log('workout details:', workoutDetails )
 
   return (
+    <>
     <div>
       <h2>Workout Details</h2>
       <p>Workout ID: {id}</p>
     </div>
+    <br />
+    <Link to={`/workouts/${id}/exercises`}>Create Exercise</Link>
+    </>
   )
 }

@@ -10,53 +10,46 @@ export default function CreateWorkoutsPage() {
       apiExercises: [] //pass in id's from API/
     });
 
-    const { workouts, setWorkouts, handleWorkoutSubmit } = useContext(WorkoutContext);
-
-    useEffect(() => {
-        workoutsService.getAllWorkouts()
-          .then(res => {
-            setWorkouts(res.data.workouts)
-          })
-          .catch((error) => console.log(error));
-
-      }, [])
+    const { handleWorkoutSubmit } = useContext(WorkoutContext);
 
       const handleChange = (event) => {
-        event.preventDefault();
-    
+
         setFormData({
           ...formData, 
           [event.target.name]: event.target.value
-        })
+        }
 
-        console.log(workouts);
+        )
       }
 
       const handleSubmit = (e) => {
         e.preventDefault();
 
-        handleWorkoutSubmit(formData);
+        handleWorkoutSubmit(formData)
+        
+          setFormData({
+            date: '',
+            exercises: [],
+            apiExercises: [] 
+          })
+        ;
 
-        setFormData({
-          date: '',
-          exercises: [],
-          apiExercises: [] 
-        })
 
       };
 
       return (
         <div id='workout-form-cnt'>
+        {/* {console.log(formData)} */}
           <form id='workout-form' onSubmit={handleSubmit}>
             <label>Select Date: </label>
             <input 
               type="date"
               name="date"
               value={formData.date}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e)}
             />
             <br />
-            <Link to={'/workouts'}><button type="submit">Create Workout</button></Link>
+            <button type="submit">Create Workout</button>
           </form>
         </div>
       )

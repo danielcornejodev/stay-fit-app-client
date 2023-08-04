@@ -18,12 +18,13 @@ export default function WorkoutsPage() {
 
   }, [])
 
-  console.log(workouts);
-
   function formatDate(dateString) {
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-    return new Date(dateString).toLocaleDateString('en-US', options);
+    const year = dateString.slice(0, 4);
+    const month = dateString.slice(5, 7);
+    const day = dateString.slice(8, 10);
+    return `${month}/${day}/${year}`;
   }
+
 
   return (
     <div id='workout-cnt'>

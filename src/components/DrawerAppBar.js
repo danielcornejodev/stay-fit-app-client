@@ -39,7 +39,7 @@ function DrawerAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', color: 'black', }}>
       <Typography variant="h6" sx={{ my: 2, textAlign: 'center', color: 'black', fontWeight: '800' }}>
-        Stay Fit App
+        Stay Fit
       </Typography>
       <Divider />
       <List>
@@ -113,7 +113,7 @@ function DrawerAppBar(props) {
                 display: 'block',      // Optional: Make the NavLink a block element to take full width
               }}
             >
-              <ListItemText>See Workouts</ListItemText>
+              <ListItemText>View Workouts</ListItemText>
             </NavLink>
           </ListItemButton>
         </ListItem>
@@ -136,7 +136,7 @@ function DrawerAppBar(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav" style={{ background: 'white', color: 'black', fontWeight: '600' }}>
+      <AppBar component="nav" style={{ background: 'white', color: 'black', fontWeight: '600', height: 'inherit' }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -156,10 +156,10 @@ function DrawerAppBar(props) {
               to={'/'} 
               style={{
                 color: 'black',
-                textDecoration: 'none', // Remove default hyperlink styling
+                textDecoration: 'none', // Remove default hyperlink styling\
               }}
               >
-              Stay Fit App
+              Stay Fit
             </NavLink>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
@@ -181,7 +181,7 @@ function DrawerAppBar(props) {
                 <Button sx={{ color: 'black', fontWeight: '600' }}>Create Workout</Button>
               </NavLink>
               <NavLink to={'/workouts'}>
-                <Button sx={{ color: 'black', fontWeight: '600' }}>See Workouts</Button>
+                <Button sx={{ color: 'black', fontWeight: '600' }}>View Workouts</Button>
               </NavLink>
         
               <Button sx={{ color: 'black', fontWeight: '600' }} onClick={logOutUser}>Logout</Button>

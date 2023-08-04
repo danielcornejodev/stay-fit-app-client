@@ -33,3 +33,18 @@ code {
   text-decoration: none; /* Remove underline and text decoration */
   /* Add any other styling properties you want to reset here */
 }
+
+.css-130f8nx > a > button {
+  font-size: .85rem;
+  margin: 0 5px;
+}
+
+.css-130f8nx > button {
+  font-size: .85rem;
+  margin: 0 5px;
+}
+
+.css-130f8nx > span {
+  font-size: .85rem;
+  font-family: cursive;
+}
