@@ -43,42 +43,50 @@ function SignupPage(props) {
 
   
   return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+    <div className="outer-form-page-cnt ">
+      <div className="form-page-cnt">
+        <h1>Sign Up</h1>
 
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input 
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleEmail}
-        />
+        <form className='form' onSubmit={handleSignupSubmit}>
+          <div className="label-input-div">
+            <label>Email:</label>
+            <input 
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleEmail}
+            />
+          </div>
+          
+          <div className="label-input-div">
+            <label>Password:</label>
+            <input 
+              type="password"
+              name="password"
+              value={password}
+              onChange={handlePassword}
+            />
+          </div>
 
-        <label>Password:</label>
-        <input 
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+          <div className="label-input-div">
+            <label>Name:</label>
+            <input 
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleName}
+            />
+          </div>
+          <button type="submit">Sign Up</button>
+        </form>
 
-        <label>Name:</label>
-        <input 
-          type="text"
-          name="name"
-          value={name}
-          onChange={handleName}
-        />
+        { errorMessage && <p className="error-message">{errorMessage}</p> }
 
-        <button type="submit">Sign Up</button>
-      </form>
-
-      { errorMessage && <p className="error-message">{errorMessage}</p> }
-
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+        <p>Already have account?</p>
+        <Link to={"/login"}> Login</Link>
+      </div>
     </div>
+
   )
 }
 

@@ -45,6 +45,92 @@ code {
 }
 
 .css-130f8nx > span {
-  font-size: .85rem;
+  font-size: 1rem;
   font-family: cursive;
+}
+
+.outer-form-page-cnt {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-page-cnt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.label-input-div {
+  display: flex;
+  width: 100%;
+  justify-content: start;
+}
+
+.label-input-div > label {
+  width: 25%;
+  text-align: right;
+  padding-right: 7px;
+}
+
+.label-input-div > input {
+  margin-bottom: 30px;
+}
+
+.label-input-div > select {
+  margin-bottom: 20px;
+}
+
+#suggest-btn {
+  height: 50%;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .label-input-div > input {
+    width: 80%;
+  }
+
+  .label-input-div > label {
+    width: 35%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .label-input-div > input {
+    width: 70%;
+  }
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .label-input-div > input {
+    width: 60%;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .label-input-div > input {
+    width: 50%;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .form-page-cnt {
+    width: 40%;
+  }
 }

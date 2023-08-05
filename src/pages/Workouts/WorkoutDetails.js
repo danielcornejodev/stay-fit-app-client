@@ -25,7 +25,7 @@ export default function WorkoutDetails() {
       <p>Workout ID: {id}</p>
     </div>
     <br />
-    <Link to={`/workouts/${id}/exercises`}>Create Exercise</Link>
+    <Link to={`/workouts/${id}/exercises/create`}>Create Exercise</Link>
     </>
   )
 }

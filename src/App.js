@@ -25,7 +25,7 @@ function App() {
           <Route path='/workouts/create' element={<IsPrivate> <CreateWorkoutsPage /> </IsPrivate>} />
           <Route path='/workouts' element={<IsPrivate> <WorkoutsPage /> </IsPrivate>} />
           <Route path='/workouts/:id' element={<IsPrivate> <WorkoutDetails /> </IsPrivate>} />
-          <Route path='/workouts/:id/exercises' element={<IsPrivate> <CreateExercise /> </IsPrivate>} />
+          <Route path='/workouts/:id/exercises/create' element={<IsPrivate> <CreateExercise /> </IsPrivate>} />
 
           <Route path="/signup" element={<IsAnon> <SignupPage /> </IsAnon> } />
           <Route path="/login" element={ <LoginPage /> } />

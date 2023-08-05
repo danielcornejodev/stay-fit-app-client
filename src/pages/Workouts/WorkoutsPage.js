@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function WorkoutsPage() {
 
-  const { workouts, setWorkouts, handleWorkoutSubmit } = useContext(WorkoutContext);
+  const { workouts, setWorkouts } = useContext(WorkoutContext);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -15,7 +15,6 @@ export default function WorkoutsPage() {
         setLoading(false);// Set loading to false once data is fetched
       })
       .catch((error) => console.log(error));
-
   }, [])
 
   function formatDate(dateString) {
