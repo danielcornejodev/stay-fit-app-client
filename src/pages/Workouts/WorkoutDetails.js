@@ -1,32 +1,40 @@
-import { React, useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom'; // Import useParams to get the workout id from the URL params
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import workoutsService from '../../services/workouts.service';
 
 export default function WorkoutDetails() {
+  const { id } = useParams();
+  const [workoutDetails, setWorkoutDetails] = useState(null);
 
-  const { id } = useParams(); 
+  useEffect(() => {
+    workoutsService.getWorkout(id)
+      .then((res) => setWorkoutDetails(res.data))
+      .catch((error) => console.log(error));
+  }, [id]);
 
-  console.log(id)
+  console.log('workout details:', workoutDetails);
 
-    // Here, you can use the workout id to fetch the specific workout details using Axios or any other method
-  // For example:
-  // const [workoutDetails, setWorkoutDetails] = useState(null);
+  if (!workoutDetails) {
+    return <div>Loading...</div>; // You can show a loading indicator here
+  }
 
-  // useEffect(() => {
-  //   WorkoutsService.getWorkout()
-  //     .then((res) => setWorkoutDetails(res.data))
-  //     .catch((error) => console.log(error));
-  // }, [id]);
-
-  // console.log('workout details:', workoutDetails )
+  const exercises = workoutDetails.workout.exercises;
 
   return (
     <>
-    <div>
-      <h2>Workout Details</h2>
-      <p>Workout ID: {id}</p>
-    </div>
-    <br />
-    <Link to={`/workouts/${id}/exercises/create`}>Create Exercise</Link>
+      <div>
+        <h1>Workout Details</h1>
+      </div>
+      <Link to={`/workouts/${id}/exercises/create`}>Create New Exercise</Link>
+      {exercises.map((exercise, index) => (
+        <div key={index}>
+          <h3>Exercise {index + 1}</h3>
+          <p>Name: {exercise.name}</p>
+          <p>Type: {exercise.type}</p>
+          <p>Muscle: {exercise.muscle}</p>
+          <p>Difficulty: {exercise.difficulty}</p>
+        </div>
+      ))}
     </>
-  )
+  );
 }

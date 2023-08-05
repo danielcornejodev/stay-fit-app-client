@@ -66,13 +66,13 @@ export default function CreateExercise() {
             <label htmlFor="type">Step 1:</label>
             <select name="type" id="type" form="create-exercise-form" value={formData.type} onChange={(e) => handleChange(e)}>
               <option value="">--Please choose a Type--</option>
-              <option value="cardio">Cardio</option>
-              <option value="olympic_weightlifting">Olympic Weightlifting</option>
-              <option value="plyometrics">Plyometrics</option>
-              <option value="powerlifting">Powerlifting</option>
-              <option value="strength">Strength</option>
-              <option value="stretching">Stretching</option>
-              <option value="strongman">Strongman</option>
+              <option value="Cardio">Cardio</option>
+              <option value="Olympic_Weightlifting">Olympic Weightlifting</option>
+              <option value="Plyometrics">Plyometrics</option>
+              <option value="Powerlifting">Powerlifting</option>
+              <option value="Strength">Strength</option>
+              <option value="Stretching">Stretching</option>
+              <option value="Strongman">Strongman</option>
             </select>
           </div>
 
@@ -80,22 +80,22 @@ export default function CreateExercise() {
             <label htmlFor="muscle">Step 2:</label>
             <select name="muscle" id="muscle" form="create-exercise-form" value={formData.muscle} onChange={(e) => handleChange(e)}>
               <option value="">--Please choose a Muscle Group--</option>
-              <option value="abdominals">Abdominals</option>
-              <option value="abductors">Abductors</option>
-              <option value="adductors">Adductors</option>
-              <option value="biceps">Biceps</option>
-              <option value="calves">Calves</option>
-              <option value="chest">Chest</option>
-              <option value="forearms">Forearms</option>
-              <option value="glutes">Glutes</option>
-              <option value="hamstrings">Hamstrings</option>
-              <option value="lats">Lats</option>
-              <option value="lower_back">Lower Back</option>
-              <option value="middle_back">Middle Back</option>
-              <option value="neck">Neck</option>
-              <option value="quadriceps">Quadriceps</option>
-              <option value="traps">Traps</option>
-              <option value="triceps">Triceps</option>
+              <option value="Abdominals">Abdominals</option>
+              <option value="Abductors">Abductors</option>
+              <option value="Adductors">Adductors</option>
+              <option value="Biceps">Biceps</option>
+              <option value="Calves">Calves</option>
+              <option value="Chest">Chest</option>
+              <option value="Forearms">Forearms</option>
+              <option value="Glutes">Glutes</option>
+              <option value="Hamstrings">Hamstrings</option>
+              <option value="Lats">Lats</option>
+              <option value="Lower_Back">Lower Back</option>
+              <option value="Middle_Back">Middle Back</option>
+              <option value="Neck">Neck</option>
+              <option value="Quadriceps">Quadriceps</option>
+              <option value="Traps">Traps</option>
+              <option value="Triceps">Triceps</option>
             </select>
           </div>
 
@@ -103,9 +103,9 @@ export default function CreateExercise() {
             <label htmlFor="difficulty">Step 3:</label>
             <select name="difficulty" id="difficulty" form="create-exercise-form" value={formData.difficulty} onChange={(e) => handleChange(e)}>
               <option value="">--Please choose a Difficulty Level--</option>
-              <option value="beginner">Beginner</option>
-              <option value="intermediate">Intermediate</option>
-              <option value="expert">Expert</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Expert">Expert</option>
             </select>
           </div>
 
