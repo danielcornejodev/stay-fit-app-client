@@ -1,7 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import workoutsService from '../../services/workouts.service';
+import React, { useContext, useState } from 'react';
 import WorkoutContext from '../../context/workouts.context';
-import { Link } from "react-router-dom";
 
 export default function CreateWorkoutsPage() {
     const [formData, setFormData] = useState({
@@ -13,7 +11,6 @@ export default function CreateWorkoutsPage() {
     const { handleWorkoutSubmit } = useContext(WorkoutContext);
 
       const handleChange = (event) => {
-
         setFormData({
           ...formData, 
           [event.target.name]: event.target.value

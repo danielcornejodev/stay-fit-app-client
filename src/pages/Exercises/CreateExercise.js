@@ -1,8 +1,57 @@
-import React from 'react'
+import React, { useContext, useState } from 'react';
+import { useNavigate, useParams } from "react-router-dom";
+import exercisesService from '../../services/exercises.service';
 
 export default function CreateExercise() {
+  const [formData, setFormData] = useState({
+    name: '',
+    type: '',
+    muscle: '',
+    equipment: '',
+    difficulty: '',
+    instructions: ''
+  });
 
-  
+  const [exercises, setExercises] = useState([]);
+
+  const { id } = useParams(); 
+	
+  const navigate = useNavigate();
+
+	const handleExerciseSubmit = () => {
+    exercisesService.createExercise(id, formData)
+			.then((res) => {
+				setExercises([...exercises, res.data.exercises]);
+				navigate(`/workouts/${id}`);
+			})
+			.catch((err) => console.log({ err }));
+	};
+
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    handleExerciseSubmit(formData)
+    
+    setFormData({
+      name: '',
+      type: '',
+      muscle: '',
+      equipment: '',
+      difficulty: '',
+      instructions: ''
+    })
+  ;
+
+
+  };
+
 
 
   return (
@@ -11,11 +60,11 @@ export default function CreateExercise() {
       <div className='form-page-cnt'>
         <h1>Create Exercise</h1>
 
-        <form className='form' id='create-exercise-form'>
+        <form className='form' id='create-exercise-form' onSubmit={handleSubmit}>
 
           <div className='label-input-div'>
-            <label for="type">Type:</label>
-            <select name="type" id="type" form="create-exercise-form">
+            <label htmlFor="type">Step 1:</label>
+            <select name="type" id="type" form="create-exercise-form" value={formData.type} onChange={(e) => handleChange(e)}>
               <option value="">--Please choose a Type--</option>
               <option value="cardio">Cardio</option>
               <option value="olympic_weightlifting">Olympic Weightlifting</option>
@@ -28,8 +77,8 @@ export default function CreateExercise() {
           </div>
 
           <div className='label-input-div'>
-            <label for="muscle">Muscle:</label>
-            <select name="muscle" id="muscle" form="create-exercise-form">
+            <label htmlFor="muscle">Step 2:</label>
+            <select name="muscle" id="muscle" form="create-exercise-form" value={formData.muscle} onChange={(e) => handleChange(e)}>
               <option value="">--Please choose a Muscle Group--</option>
               <option value="abdominals">Abdominals</option>
               <option value="abductors">Abductors</option>
@@ -51,21 +100,32 @@ export default function CreateExercise() {
           </div>
 
           <div className='label-input-div'>
-            <label for="difficulty">Difficulty:</label>
-            <select name="difficulty" id="difficulty" form="create-exercise-form">
+            <label htmlFor="difficulty">Step 3:</label>
+            <select name="difficulty" id="difficulty" form="create-exercise-form" value={formData.difficulty} onChange={(e) => handleChange(e)}>
               <option value="">--Please choose a Difficulty Level--</option>
               <option value="beginner">Beginner</option>
               <option value="intermediate">Intermediate</option>
               <option value="expert">Expert</option>
             </select>
-            <button id='suggest-btn'>Suggest Exercise</button>
           </div>
+
           <div className='label-input-div'>
-            <label for="name">Name (optional):</label>
+            <label htmlFor="difficulty">Step 4:</label>
+            <button id='suggest-btn'>Suggest Exercises</button>
+          </div>
+
+          <div>
+            <p>Not in suggestions? Click here to enter Exercise</p>
+          </div>
+
+          <div className='label-input-div'>
+            <label htmlFor="name">Name:</label>
             <input 
               type="text"
               name="name"
               placeholder='Enter your own exercise (optional)'
+              value={formData.name} 
+              onChange={(e) => handleChange(e)}
             />
           </div>
 
@@ -74,7 +134,7 @@ export default function CreateExercise() {
       </div> 
     </div>
     <div>
-      <h1>Suggested Exercise </h1>
+      <h1>Suggested Exercises</h1>
     </div>
     </>
   )
