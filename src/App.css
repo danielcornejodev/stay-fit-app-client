@@ -115,3 +115,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 input[type="date"]::placeholder {
   color: #999; /* Example: change the color of the placeholder text */
 }
+
+#main-suggested-cnt {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.apiExercise-cnt {
+  border: 1px solid black;
+  border-radius: 8px;
+  width: 75%;
+  margin-bottom: 22px;
+}
+
+.inner-apiExercise-cnt {
+  display: flex;
+  padding: 20px;
+}

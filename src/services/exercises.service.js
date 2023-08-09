@@ -29,8 +29,6 @@ class ExercisesService {
     return this.api.get(`/api/exercises/workouts/${id}`);
   };
 
-  //have not yet worked on below routes
-
   // GET /api/exercises/:id
   getExercise = id => {
     return this.api.get(`/api/exercises/${id}`);

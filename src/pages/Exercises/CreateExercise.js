@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import exercisesService from '../../services/exercises.service';
+import axios from 'axios';
 
 export default function CreateExercise() {
   const [formData, setFormData] = useState({
@@ -13,6 +14,8 @@ export default function CreateExercise() {
   });
 
   const [exercises, setExercises] = useState([]);
+  const [apiExercises, setAPIExercises] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const { id } = useParams(); 
 	
@@ -33,6 +36,28 @@ export default function CreateExercise() {
       [event.target.name]: event.target.value,
     });
   };
+
+
+
+  const handleAPICall = (e) => {
+    e.preventDefault();
+    axios.get('https://api.api-ninjas.com/v1/exercises', { 
+      headers: { 'X-Api-Key': 'pappYG+c3P/9aeLGJR+dYw==wnzcbOdE6zF1qne5' },
+      params: {
+        type: formData.type,
+        muscle: formData.muscle,
+        difficulty: formData.difficulty
+      }
+    })
+    .then((res) => {
+      setAPIExercises([...apiExercises, res.data]);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.log({ err });
+    });
+  };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -111,7 +136,7 @@ export default function CreateExercise() {
 
           <div className='label-input-div'>
             <label htmlFor="difficulty">Step 4:</label>
-            <button id='suggest-btn'>Suggest Exercises</button>
+            <button id='suggest-btn' onClick={handleAPICall}>Suggest Exercises</button>
           </div>
 
           <div>
@@ -135,6 +160,35 @@ export default function CreateExercise() {
     </div>
     <div>
       <h1>Suggested Exercises</h1>
+      {console.log(apiExercises)}
+      {loading ? ( // Conditional rendering based on the loading state
+        <div>Loading...</div>
+      ) : apiExercises.map((exerciseArray, i) => (
+        <div id='main-suggested-cnt' key={i}>
+          {exerciseArray.map((exercise, j) => (
+            <div key={j}className='apiExercise-cnt'>
+              <div className='inner-apiExercise-cnt'>
+                <h3>Difficulty: </h3><p> {exercise.difficulty}</p>
+              </div>
+              <div className='inner-apiExercise-cnt'>
+                <h3>Equipment: </h3><p> {exercise.equipment}</p>
+              </div> 
+              <div className='inner-apiExercise-cnt'>
+                <h3>Instructions: </h3><p> {exercise.instructions}</p>
+              </div>
+              <div className='inner-apiExercise-cnt'>
+                <h3>Muscle: </h3><p> {exercise.muscle}</p>
+              </div>
+              <div className='inner-apiExercise-cnt'>
+                <h3>Name: </h3><p> {exercise.name}</p>
+              </div>
+              <div className='inner-apiExercise-cnt'>
+                <h3>Type: </h3><p> {exercise.type}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
     </>
   )

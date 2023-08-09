@@ -28,6 +28,7 @@ class WorkoutsService {
   getAllWorkouts = () => {
     return this.api.get('/api/workouts');
   };
+ 
 
   // GET /api/workouts/:id
   getWorkout = id => {
