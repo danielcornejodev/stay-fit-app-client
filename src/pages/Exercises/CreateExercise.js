@@ -15,8 +15,7 @@ export default function CreateExercise() {
 
   const [exercises, setExercises] = useState([]);
   const [apiExercises, setAPIExercises] = useState([]);
-  const [loading, setLoading] = useState(true);
-
+  
   const { id } = useParams(); 
 	
   const navigate = useNavigate();
@@ -51,7 +50,6 @@ export default function CreateExercise() {
     })
     .then((res) => {
       setAPIExercises([...apiExercises, res.data]);
-      setLoading(false);
     })
     .catch((err) => {
       console.log({ err });
@@ -161,9 +159,7 @@ export default function CreateExercise() {
     <div>
       <h1>Suggested Exercises</h1>
       {console.log(apiExercises)}
-      {loading ? ( // Conditional rendering based on the loading state
-        <div>Loading...</div>
-      ) : apiExercises.map((exerciseArray, i) => (
+      {apiExercises.map((exerciseArray, i) => (
         <div id='main-suggested-cnt' key={i}>
           {exerciseArray.map((exercise, j) => (
             <div key={j}className='apiExercise-cnt'>

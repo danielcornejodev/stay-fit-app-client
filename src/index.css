@@ -96,6 +96,20 @@ code {
   margin-bottom: 20px;
 }
 
+#main-exercise-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exercises-div {
+  width: 50%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .label-input-div > input {
@@ -105,8 +119,11 @@ code {
   .label-input-div > label {
     width: 35%;
   }
-}
 
+  .exercises-div {
+    width: 70%;
+  }
+}
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .label-input-div > input {

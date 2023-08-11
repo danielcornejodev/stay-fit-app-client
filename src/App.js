@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage';
 import WorkoutsPage from './pages/Workouts/WorkoutsPage';
 import WorkoutDetails from './pages/Workouts/WorkoutDetails';
 import CreateExercise from './pages/Exercises/CreateExercise';
+import UpdateWorkoutPage from './pages/Workouts/UpdateWorkoutPage'
 
 import IsPrivate from './components/IsPrivate';
 import IsAnon from './components/IsAnon';
@@ -25,6 +26,7 @@ function App() {
           <Route path='/workouts/create' element={<IsPrivate> <CreateWorkoutsPage /> </IsPrivate>} />
           <Route path='/workouts' element={<IsPrivate> <WorkoutsPage /> </IsPrivate>} />
           <Route path='/workouts/:id' element={<IsPrivate> <WorkoutDetails /> </IsPrivate>} />
+          <Route path='/workouts/:id/update' element={<IsPrivate> <UpdateWorkoutPage /> </IsPrivate>} />
           <Route path='/workouts/:id/exercises/create' element={<IsPrivate> <CreateExercise /> </IsPrivate>} />
 
           <Route path="/signup" element={<IsAnon> <SignupPage /> </IsAnon> } />
