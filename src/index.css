@@ -23,7 +23,6 @@ code {
 .workout-div {
   border: 1px black solid;
   border-radius: 5px;
-  width: 30vw;
   margin-bottom: 25px;
   padding: 15px;
   background-color: lightcoral;
@@ -110,6 +109,11 @@ code {
   border-radius: 8px;
 }
 
+.controls {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .label-input-div > input {
@@ -123,11 +127,18 @@ code {
   .exercises-div {
     width: 70%;
   }
+  .workout-div {
+    width: 50vw;
+  }
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .label-input-div > input {
     width: 70%;
+  }
+
+  .workout-div {
+    width: 40vw;
   }
 
 }
@@ -137,6 +148,11 @@ code {
   .label-input-div > input {
     width: 60%;
   }
+
+  .workout-div {
+    width: 30vw;
+  }
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -144,11 +160,19 @@ code {
   .label-input-div > input {
     width: 50%;
   }
+
+  .workout-div {
+    width: 20vw;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1800px) {
   .form-page-cnt {
     width: 40%;
+  }
+
+  .workout-div {
+    width: 10vw;
   }
 }

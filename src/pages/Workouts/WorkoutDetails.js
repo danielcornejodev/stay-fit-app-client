@@ -31,9 +31,13 @@ export default function WorkoutDetails() {
       <div>
         <h1>Workout Details</h1>
         <h2>{formatDate(workoutDetails.workout.date)}</h2>
-        <Link to={`/workouts/${id}/update`}>Change Workout Date</Link>
       </div>
-      <Link to={`/workouts/${id}/exercises/create`}>Create New Exercise</Link>
+      
+      <div className='controls'>
+        <Link to={`/workouts/${id}/update`}>Change Workout Date</Link>
+        <Link to={`/workouts/${id}/exercises/create`}>Create New Exercise</Link>
+      </div>
+      
       <div id='main-exercise-div'>
       {exercises.map((exercise, index) => (
         <div className='exercises-div' key={index}>

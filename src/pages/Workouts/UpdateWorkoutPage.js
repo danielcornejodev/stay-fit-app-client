@@ -2,7 +2,7 @@ import React, {  useState } from 'react';
 import workoutsService from '../../services/workouts.service';
 import {  useParams, useNavigate } from 'react-router-dom'
 
-export default function CreateWorkoutsPage() {
+export default function UpdateWorkoutPage() {
     const [formData, setFormData] = useState({
       date: ''
     });
