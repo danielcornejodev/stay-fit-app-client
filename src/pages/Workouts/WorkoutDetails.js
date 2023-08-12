@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import workoutsService from '../../services/workouts.service';
 import exercisesService from '../../services/exercises.service';
 
+
 export default function WorkoutDetails() {
   const { id } = useParams();
   const [workoutDetails, setWorkoutDetails] = useState(null);
@@ -76,13 +77,6 @@ export default function WorkoutDetails() {
   // }
   
   
-  
-  
-  
-  
-  
-
-
   return (
     <>
       <div>
@@ -107,7 +101,7 @@ export default function WorkoutDetails() {
           <p>Difficulty: {exercise.difficulty}</p>
           <div style ={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <Link to={`/workouts/${id}/exercises/${exercise._id}/update`}>Edit Exercise</Link>
-            <button style ={{width: '20vw'}} onClick={() => removeExercise(exercise._id)}>Delete Workout</button>
+            <button style ={{width: '20vw'}} onClick={() => removeExercise(exercise._id)}>Delete Exercise</button>
           </div>
 
         </div> 

@@ -4,8 +4,7 @@ import WorkoutContext from '../../context/workouts.context';
 export default function CreateWorkoutsPage() {
     const [formData, setFormData] = useState({
       date: '',
-      exercises: [],
-      apiExercises: [] //pass in id's from API/
+      exercises: []
     });
 
     const { handleWorkoutSubmit } = useContext(WorkoutContext);
@@ -26,8 +25,7 @@ export default function CreateWorkoutsPage() {
         
           setFormData({
             date: '',
-            exercises: [],
-            apiExercises: [] 
+            exercises: []
           })
         ;
 
