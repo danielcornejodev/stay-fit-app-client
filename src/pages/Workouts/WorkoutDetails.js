@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import workoutsService from '../../services/workouts.service';
+import exercisesService from '../../services/exercises.service';
 
 export default function WorkoutDetails() {
   const { id } = useParams();
   const [workoutDetails, setWorkoutDetails] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     workoutsService.getWorkout(id)
@@ -25,6 +28,60 @@ export default function WorkoutDetails() {
     return `${month}/${day}/${year}`;
   }
 
+  const removeWorkout = () => {
+    workoutsService.deleteWorkout(id)
+    .then((res) => {
+      setWorkoutDetails(null)
+      navigate(`/workouts`);
+    })
+    .catch((error) => console.log(error));
+  }
+
+
+  const removeExercise = (_id) => {
+    exercisesService.deleteExercise(_id)
+    .then((res) => {
+      workoutsService.getWorkout(id)
+        .then((res) => {
+          setWorkoutDetails({
+            ...workoutDetails,
+            workout: {
+              ...workoutDetails.workout,
+              exercises: res.data.workout.exercises
+            }
+          });
+        })
+        .catch((error) => console.log(error));
+    })
+    .catch((error) => console.log(error));
+  }
+
+  //instead of making second API call
+  // const removeExercise = (_id) => {
+  //   exercisesService.deleteExercise(_id)
+  //     .then(() => {
+  //       setWorkoutDetails(prevWorkoutDetails => {
+  //         const updatedExercises = prevWorkoutDetails.workout.exercises.filter(exercise => exercise._id !== _id);
+  
+  //         return {
+  //           ...prevWorkoutDetails,
+  //           workout: {
+  //             ...prevWorkoutDetails.workout,
+  //             exercises: updatedExercises
+  //           }
+  //         };
+  //       });
+  //     })
+  //     .catch((error) => console.log(error));
+  // }
+  
+  
+  
+  
+  
+  
+  
+
 
   return (
     <>
@@ -33,7 +90,8 @@ export default function WorkoutDetails() {
         <h2>{formatDate(workoutDetails.workout.date)}</h2>
       </div>
       
-      <div className='controls'>
+      <div style ={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} className='controls'>
+        <button style ={{width: '20vw'}} onClick={removeWorkout}>Delete Workout</button>
         <Link to={`/workouts/${id}/update`}>Change Workout Date</Link>
         <Link to={`/workouts/${id}/exercises/create`}>Create New Exercise</Link>
       </div>
@@ -47,7 +105,11 @@ export default function WorkoutDetails() {
           <p>Type: {exercise.type}</p>
           <p>Muscle: {exercise.muscle}</p>
           <p>Difficulty: {exercise.difficulty}</p>
-          <Link to={`/workouts/${id}/exercises/${exercise._id}/update`}>Edit Exercise</Link>
+          <div style ={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <Link to={`/workouts/${id}/exercises/${exercise._id}/update`}>Edit Exercise</Link>
+            <button style ={{width: '20vw'}} onClick={() => removeExercise(exercise._id)}>Delete Workout</button>
+          </div>
+
         </div> 
       ))}
       </div>
