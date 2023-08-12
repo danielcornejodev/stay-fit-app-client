@@ -116,12 +116,16 @@ code {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  .form-page-cnt {
+    width: 80%;
+  }
   .label-input-div > input {
     width: 80%;
   }
 
   .label-input-div > label {
-    width: 35%;
+    width: 40%;
+    text-align: left;
   }
 
   .exercises-div {
@@ -157,6 +161,10 @@ code {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  .form-page-cnt {
+    width: 50%;
+  }
+  
   .label-input-div > input {
     width: 50%;
   }
@@ -169,7 +177,7 @@ code {
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1800px) {
   .form-page-cnt {
-    width: 40%;
+    width: 30%;
   }
 
   .workout-div {
