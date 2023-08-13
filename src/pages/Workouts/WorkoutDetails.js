@@ -85,8 +85,8 @@ export default function WorkoutDetails() {
       </div>
       
       <div style ={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} className='controls'>
-        <button style ={{width: '20vw'}} onClick={removeWorkout}>Delete Workout</button>
         <Link to={`/workouts/${id}/update`}>Change Workout Date</Link>
+        <button style ={{width: '20vw'}} onClick={removeWorkout}>Delete Workout</button>
         <Link to={`/workouts/${id}/exercises/create`}>Create New Exercise</Link>
       </div>
       
@@ -95,10 +95,14 @@ export default function WorkoutDetails() {
         <div className='exercises-div' key={index}>
         {console.log(exercise)}
           <h3>Exercise {index + 1}</h3>
-          <p>Name: {exercise.name}</p>
-          <p>Type: {exercise.type}</p>
-          <p>Muscle: {exercise.muscle}</p>
-          <p>Difficulty: {exercise.difficulty}</p>
+          <h4>Name:</h4><p> {exercise.name}</p>
+          <h4>Type:</h4><p> {exercise.type}</p>
+          <h4>Muscle:</h4><p> {exercise.muscle}</p>
+          <h4>Difficulty:</h4><p> {exercise.difficulty}</p>
+          <h4>Equipment:</h4><p> {exercise.equipment}</p>
+          <h4>Instructions:</h4><p> {exercise.instructions}</p>
+          <h4>Reps:</h4><p> {exercise.reps}</p>
+          <h4>Sets:</h4><p> {exercise.sets}</p>
           <div style ={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <Link to={`/workouts/${id}/exercises/${exercise._id}/update`}>Edit Exercise</Link>
             <button style ={{width: '20vw'}} onClick={() => removeExercise(exercise._id)}>Delete Exercise</button>
