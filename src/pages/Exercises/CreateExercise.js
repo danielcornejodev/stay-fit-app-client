@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import exercisesService from '../../services/exercises.service';
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
 
 export default function CreateExercise() {
   const [formData, setFormData] = useState({
@@ -229,15 +228,6 @@ export default function CreateExercise() {
                   <h3>Instructions: </h3><p> {selectedExercise.instructions}</p>
                 </div>
 
-
-
-
-
-
-
-
-
-
                 <button onClick={() => setSelectedExercise(null)}>Unpin Exercise</button>
               </div>
 
@@ -375,24 +365,31 @@ export default function CreateExercise() {
             <div id='main-suggested-cnt' key={i}>
               {exerciseArray.map((exercise, j) => (
                 <div key={j}className='apiExercise-cnt'>
-                  <div className='inner-apiExercise-cnt'>
-                    <h3>Difficulty: </h3><p> {exercise.difficulty}</p>
-                  </div>
-                  <div className='inner-apiExercise-cnt'>
-                    <h3>Equipment: </h3><p> {exercise.equipment}</p>
-                  </div> 
-                  <div className='inner-apiExercise-cnt'>
-                    <h3>Instructions: </h3><p> {exercise.instructions}</p>
-                  </div>
-                  <div className='inner-apiExercise-cnt'>
-                    <h3>Muscle: </h3><p> {exercise.muscle}</p>
-                  </div>
-                  <div className='inner-apiExercise-cnt'>
-                    <h3>Name: </h3><p> {exercise.name}</p>
-                  </div>
+
                   <div className='inner-apiExercise-cnt'>
                     <h3>Type: </h3><p> {exercise.type}</p>
                   </div>
+
+                  <div className='inner-apiExercise-cnt'>
+                    <h3>Muscle: </h3><p> {exercise.muscle}</p>
+                  </div>
+
+                  <div className='inner-apiExercise-cnt'>
+                    <h3>Difficulty: </h3><p> {exercise.difficulty}</p>
+                  </div>
+
+                  <div className='inner-apiExercise-cnt'>
+                    <h3>Name: </h3><p> {exercise.name}</p>
+                  </div>
+
+                  <div className='inner-apiExercise-cnt'>
+                    <h3>Equipment: </h3><p> {exercise.equipment}</p>
+                  </div> 
+
+                  <div className='inner-apiExercise-cnt'>
+                    <h3>Instructions: </h3><p> {exercise.instructions}</p>
+                  </div>
+
                   <button onClick={() => setSelectedExercise(exercise)}>Pin Exercise</button>
                 </div>
               ))}
