@@ -39,42 +39,42 @@ export default function WorkoutDetails() {
   }
 
 
-  const removeExercise = (_id) => {
-    exercisesService.deleteExercise(_id)
-    .then((res) => {
-      workoutsService.getWorkout(id)
-        .then((res) => {
-          setWorkoutDetails({
-            ...workoutDetails,
-            workout: {
-              ...workoutDetails.workout,
-              exercises: res.data.workout.exercises
-            }
-          });
-        })
-        .catch((error) => console.log(error));
-    })
-    .catch((error) => console.log(error));
-  }
-
-  //instead of making second API call
   // const removeExercise = (_id) => {
   //   exercisesService.deleteExercise(_id)
-  //     .then(() => {
-  //       setWorkoutDetails(prevWorkoutDetails => {
-  //         const updatedExercises = prevWorkoutDetails.workout.exercises.filter(exercise => exercise._id !== _id);
-  
-  //         return {
-  //           ...prevWorkoutDetails,
+  //   .then((res) => {
+  //     workoutsService.getWorkout(id)
+  //       .then((res) => {
+  //         setWorkoutDetails({
+  //           ...workoutDetails,
   //           workout: {
-  //             ...prevWorkoutDetails.workout,
-  //             exercises: updatedExercises
+  //             ...workoutDetails.workout,
+  //             exercises: res.data.workout.exercises
   //           }
-  //         };
-  //       });
-  //     })
-  //     .catch((error) => console.log(error));
+  //         });
+  //       })
+  //       .catch((error) => console.log(error));
+  //   })
+  //   .catch((error) => console.log(error));
   // }
+
+  //instead of making second API call
+  const removeExercise = (_id) => {
+    exercisesService.deleteExercise(_id)
+      .then(() => {
+        setWorkoutDetails(prevWorkoutDetails => {
+          const updatedExercises = prevWorkoutDetails.workout.exercises.filter(exercise => exercise._id !== _id);
+  
+          return {
+            ...prevWorkoutDetails,
+            workout: {
+              ...prevWorkoutDetails.workout,
+              exercises: updatedExercises
+            }
+          };
+        });
+      })
+      .catch((error) => console.log(error));
+  }
   
   
   return (
