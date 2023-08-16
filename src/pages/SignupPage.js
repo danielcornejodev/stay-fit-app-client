@@ -77,13 +77,13 @@ function SignupPage(props) {
               onChange={handleName}
             />
           </div>
-          <button type="submit">Sign Up</button>
+          <button id='signup-btn' className='login-signup-btn' type="submit">Sign Up</button>
         </form>
 
         { errorMessage && <p className="error-message">{errorMessage}</p> }
 
         <p>Already have account?</p>
-        <Link to={"/login"}> Login</Link>
+        <Link className='login-signup-btn' to={"/login"}> Login</Link>
       </div>
     </div>
 
