@@ -46,7 +46,20 @@ function LoginPage(props) {
   };
   
   return (
-    <div className='outer-form-page-cnt'>
+    <>
+    <div>
+      <video 
+      width="100%" 
+      loop
+      muted
+      autoPlay
+      preload='auto'
+      src='/assets/pullups video.mp4'
+      type='video/mp4'
+      >
+      </video>
+    </div>
+    <div style={{marginBottom: '50px'}} className='outer-form-page-cnt'>
       <div className='form-page-cnt'>
         <h1>Login</h1>
 
@@ -80,7 +93,7 @@ function LoginPage(props) {
         <Link className='login-signup-btn' to={"/signup"}> Sign Up</Link>
       </div> 
     </div>
-
+    </>
   )
 }
 

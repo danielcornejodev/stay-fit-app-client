@@ -260,6 +260,27 @@ input[type="date"]::placeholder {
   width: 390px;
 }
 
+#main-home-cnt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#home-div {
+  font-weight: 300;
+}
+
+#home-div > h1:nth-child(1) {
+  margin: 10px 0;
+}
+
+#home-div > h2:nth-child(2) {
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .form-page-cnt {
@@ -285,14 +306,12 @@ input[type="date"]::placeholder {
     width: 100%;
   }
 
-  /* .inner-apiExercise-cnt > h3 {
-    width: 50%;
+  #home-div {
+    width: 80%;
+    font-weight: 300;
   }
 
-  .inner-apiExercise-cnt > p {
-    text-align: left;
-  } */
-  
+
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
@@ -310,6 +329,11 @@ input[type="date"]::placeholder {
 
   .inner-apiExercise-cnt > h3 {
     width: 51%;
+  }
+
+  #home-div {
+    width: 80%;
+    font-weight: 300;
   }
 
 }
@@ -332,6 +356,11 @@ input[type="date"]::placeholder {
     width: 27%;
   } */
 
+  #home-div {
+    width: 80%;
+    font-weight: 300;
+  }
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -341,7 +370,7 @@ input[type="date"]::placeholder {
   }
   
   .label-input-div > input {
-    width: 50%;
+    width: 60%;
   }
 
   .workout-div {
@@ -355,6 +384,11 @@ input[type="date"]::placeholder {
   .inner-apiExercise-cnt > h3 {
     width: 19%;
   } */
+
+  #home-div {
+    width: 80%;
+    font-weight: 300;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -370,4 +404,9 @@ input[type="date"]::placeholder {
   /* .inner-apiExercise-cnt > h3 {
     width: 10%;
   } */
+
+  #home-div {
+    width: 50%;
+    font-weight: 300;
+  }
 }

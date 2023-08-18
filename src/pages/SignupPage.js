@@ -39,11 +39,22 @@ function SignupPage(props) {
       })
   };
 
-
-
   
   return (
-    <div className="outer-form-page-cnt ">
+    <>
+    <div>
+      <video 
+      width="100%" 
+      loop
+      muted
+      autoPlay
+      preload='auto'
+      src='/assets/video (2160p) woman squats.mp4'
+      type='video/mp4'
+      >
+      </video>
+    </div>
+    <div style={{marginBottom: '50px'}} className="outer-form-page-cnt">
       <div className="form-page-cnt">
         <h1>Sign Up</h1>
 
@@ -86,7 +97,7 @@ function SignupPage(props) {
         <Link className='login-signup-btn' to={"/login"}> Login</Link>
       </div>
     </div>
-
+    </>
   )
 }
 
