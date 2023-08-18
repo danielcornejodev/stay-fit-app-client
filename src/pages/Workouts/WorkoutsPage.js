@@ -27,7 +27,7 @@ export default function WorkoutsPage() {
 
   return (
     <div id='workout-cnt'>
-      <p>Workouts Schedule</p>
+      <h1>Workout Schedule</h1>
       {loading ? ( // Conditional rendering based on the loading state
         <div>Loading...</div>
       ) : (

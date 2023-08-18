@@ -61,7 +61,7 @@ export default function CreateWorkoutsPage() {
               onChange={(e) => handleChange(e)}
             />
             <br />
-            <button type="submit">Create Workout</button>
+            <button className='login-signup-btn' type="submit">Create Workout</button>
           </form>
         </div>
         </div>

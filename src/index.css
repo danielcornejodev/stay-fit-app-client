@@ -14,7 +14,6 @@ code {
 }
 
 #workout-cnt {
-  background-color: bisque;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -22,16 +21,20 @@ code {
 }
 
 .workout-div {
-  border: 1px black solid;
   border-radius: 5px;
   margin-bottom: 25px;
   padding: 15px;
-  background-color: lightcoral;
   font-family: inherit;
   font-size: inherit;
   color: black;
-  text-decoration: none; /* Remove underline and text decoration */
-  /* Add any other styling properties you want to reset here */
+  text-decoration: none;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, .3);
+  max-width: 400px;
+}
+
+.workout-div:hover {
+  /* background-color: rgb(251, 242, 228); */
+  transform: scale(1.05); 
 }
 
 .css-130f8nx > a > button {
@@ -81,6 +84,7 @@ code {
   width: 25%;
   text-align: right;
   padding-right: 7px;
+  font-size: 20px;
 }
 
 .label-input-div > input {
@@ -89,11 +93,13 @@ code {
 
 .label-input-div > select {
   margin-bottom: 20px;
+  width: 50%;
 }
 
 #suggest-btn {
-  height: 50%;
-  margin-bottom: 20px;
+  margin: 25px 0 45px 0;
+  display: flex;
+  justify-content: center;
 }
 
 #main-exercise-div {
@@ -140,21 +146,39 @@ code {
   font-weight: 600;
 }
 
+.workout-details-controls {
+  padding: 10px 20px;
+  background-color: black; /* Button color */
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 600;
+}
+
+.white-button {
+  background-color: white;
+  color: black;
+  border: 1px solid grey;
+  margin: 10px 0;
+  width: 210px;
+}
+
 .login-signup-btn:hover {
-  background-color: rgba(37, 37, 37, 0.691); /* Darker color on hover */
+  background-color: rgba(7, 7, 7, 0.834); /* Darker color on hover */
   transform: scale(1.05); /* Slightly scale up on hover */
 }
 
 #workout-form-cnt {
   display: flex;
   justify-content: center;
+  margin-bottom: 200px;
 }
 
 #workout-form {
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
   background-color: white;
   padding: 50px;
   border-radius: 10px;
@@ -168,21 +192,6 @@ code {
 
 #workout-form > button {
   margin-top: 25px;
-}
-
-#workout-form button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#workout-form button:hover {
-  background-color: #0056b3;
 }
 
 /* Style the date input */
@@ -222,11 +231,23 @@ input[type="date"]::placeholder {
   border-radius: 8px;
   width: 75%;
   margin-bottom: 22px;
+  padding: 0px 10px 30px 10px;
 }
 
 .inner-apiExercise-cnt {
   display: flex;
-  padding: 20px;
+  padding: 5px 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .inner-apiExercise-cnt > h3 {
+  text-align: left;
+  margin-left: 10px;
+} */
+
+.instructions-div {
+  padding: 0px 25px;
 }
 
 #main-create-workout-div {
@@ -259,6 +280,19 @@ input[type="date"]::placeholder {
   .workout-div {
     width: 50vw;
   }
+
+  .label-input-div > select {
+    width: 100%;
+  }
+
+  /* .inner-apiExercise-cnt > h3 {
+    width: 50%;
+  }
+
+  .inner-apiExercise-cnt > p {
+    text-align: left;
+  } */
+  
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
@@ -268,6 +302,14 @@ input[type="date"]::placeholder {
 
   .workout-div {
     width: 40vw;
+  }
+
+  .label-input-div > select {
+    width: 70%;
+  }
+
+  .inner-apiExercise-cnt > h3 {
+    width: 51%;
   }
 
 }
@@ -281,6 +323,14 @@ input[type="date"]::placeholder {
   .workout-div {
     width: 30vw;
   }
+
+  .label-input-div > select {
+    width: 60%;
+  }
+/* 
+  .inner-apiExercise-cnt > h3 {
+    width: 27%;
+  } */
 
 }
 
@@ -297,6 +347,14 @@ input[type="date"]::placeholder {
   .workout-div {
     width: 20vw;
   }
+
+  /* .label-input-div > select {
+    width: 50%;
+  }
+
+  .inner-apiExercise-cnt > h3 {
+    width: 19%;
+  } */
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -308,4 +366,8 @@ input[type="date"]::placeholder {
   .workout-div {
     width: 10vw;
   }
+
+  /* .inner-apiExercise-cnt > h3 {
+    width: 10%;
+  } */
 }
