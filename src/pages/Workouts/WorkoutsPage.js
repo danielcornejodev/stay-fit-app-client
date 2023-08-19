@@ -26,7 +26,20 @@ export default function WorkoutsPage() {
 
 
   return (
+
     <div id='workout-cnt'>
+      <div>
+        <video 
+        width="100%" 
+        loop
+        muted
+        autoPlay
+        preload='auto'
+        src='/assets/girlcurling.mp4'
+        type='video/mp4'
+        >
+        </video>
+      </div>
       <h1>Workout Schedule</h1>
       {loading ? ( // Conditional rendering based on the loading state
         <div>Loading...</div>

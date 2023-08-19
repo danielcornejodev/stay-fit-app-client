@@ -81,16 +81,28 @@ export default function UpdateExercise() {
 
   return (
     <>
+        <div>
+          <video 
+          width="100%" 
+          loop
+          muted
+          autoPlay
+          preload='auto'
+          src='/assets/deadlift.mp4'
+          type='video/mp4'
+          >
+          </video>
+        </div>
         {selectedExercise ? (
           <>
           <div className='outer-form-page-cnt'>
             <div className='form-page-cnt'>
-              <h1>Update Exercise</h1>
+              <h1>Create Exercise</h1>
       
               <form className='form' id='create-exercise-form' >
       
                 <div className='label-input-div'>
-                  <label htmlFor="type">Step 1:</label>
+                  <label htmlFor="type">Type:</label>
                   <select name="type" id="type" form="create-exercise-form" value={formData.type} onChange={(e) => handleChange(e)}>
                     <option value="">--Please choose a Type--</option>
                     <option value="Cardio">Cardio</option>
@@ -104,7 +116,7 @@ export default function UpdateExercise() {
                 </div>
       
                 <div className='label-input-div'>
-                  <label htmlFor="muscle">Step 2:</label>
+                  <label htmlFor="muscle">Muscle:</label>
                   <select name="muscle" id="muscle" form="create-exercise-form" value={formData.muscle} onChange={(e) => handleChange(e)}>
                     <option value="">--Please choose a Muscle Group--</option>
                     <option value="Abdominals">Abdominals</option>
@@ -127,7 +139,7 @@ export default function UpdateExercise() {
                 </div>
       
                 <div className='label-input-div'>
-                  <label htmlFor="difficulty">Step 3:</label>
+                  <label htmlFor="difficulty">Difficulty:</label>
                   <select name="difficulty" id="difficulty" form="create-exercise-form" value={formData.difficulty} onChange={(e) => handleChange(e)}>
                     <option value="">--Please choose a Difficulty Level--</option>
                     <option value="Beginner">Beginner</option>
@@ -136,13 +148,12 @@ export default function UpdateExercise() {
                   </select>
                 </div>
       
-                <div className='label-input-div'>
-                  <label htmlFor="difficulty">Step 4:</label>
-                  <button id='suggest-btn' onClick={handleAPICall}>Suggest Exercises</button>
+                <div id='suggest-btn' className='label-input-div'>
+                  <button className='login-signup-btn' onClick={handleAPICall}>Suggest Exercises</button>
                 </div>
       
                 <div className='label-input-div'>
-                  <label htmlFor="name">Step 5:</label>
+                  <label htmlFor="name">Name:</label>
                   <input 
                     type="text"
                     name="name"
@@ -153,7 +164,7 @@ export default function UpdateExercise() {
                 </div>
       
                 <div className='label-input-div'>
-                  <label htmlFor="equipment">Step 6:</label>
+                  <label htmlFor="equipment">Equipment:</label>
                   <input 
                     type="text"
                     name="equipment"
@@ -164,42 +175,39 @@ export default function UpdateExercise() {
                 </div>
       
                 <div className='label-input-div' >
-                  <label htmlFor="instructions">Step 7:</label>
+                  <label htmlFor="instructions">Instructions:</label>
                   <input 
                     type="text"
                     name="instructions"
                     placeholder='Enter Instructions'
                     value={formData.instructions} 
                     onChange={(e) => handleChange(e)}
-                    id='label-input-instructions'
                   />
                 </div>
       
                 <div className='label-input-div' >
-                  <label htmlFor="sets">Step 8:</label>
+                  <label htmlFor="sets">Sets:</label>
                   <input 
                     type="number"
                     name="sets"
                     placeholder='Enter # of Sets'
                     value={formData.sets} 
                     onChange={(e) => handleChange(e)}
-                    id='label-input-instructions'
                   />
                 </div>
       
                 <div className='label-input-div' >
-                  <label htmlFor="reps">Step 9:</label>
+                  <label htmlFor="reps">Reps:</label>
                   <input 
                     type="number"
                     name="reps"
                     placeholder='Enter # of Reps'
                     value={formData.reps} 
                     onChange={(e) => handleChange(e)}
-                    id='label-input-instructions'
                   />
                 </div>
       
-                <button type="submit" onClick={handleExerciseSubmit}>Submit</button>
+                <button type="submit" className='login-signup-btn' onClick={handleExerciseSubmit}>Update Exercise</button>
               </form>
             </div> 
           </div>
@@ -235,7 +243,7 @@ export default function UpdateExercise() {
                       <h3>Instructions: </h3><p> {selectedExercise.instructions}</p>
                     </div>
     
-                    <button onClick={() => setSelectedExercise(null)}>Unpin Exercise</button>
+                    <button className='login-signup-btn' onClick={() => setSelectedExercise(null)}>Unpin Exercise</button>
                   </div>
     
               </div>
@@ -253,7 +261,7 @@ export default function UpdateExercise() {
                 <form className='form' id='create-exercise-form' >
         
                   <div className='label-input-div'>
-                    <label htmlFor="type">Step 1:</label>
+                    <label htmlFor="type">Type:</label>
                     <select name="type" id="type" form="create-exercise-form" value={formData.type} onChange={(e) => handleChange(e)}>
                       <option value="">--Please choose a Type--</option>
                       <option value="Cardio">Cardio</option>
@@ -267,7 +275,7 @@ export default function UpdateExercise() {
                   </div>
         
                   <div className='label-input-div'>
-                    <label htmlFor="muscle">Step 2:</label>
+                    <label htmlFor="muscle">Muscle:</label>
                     <select name="muscle" id="muscle" form="create-exercise-form" value={formData.muscle} onChange={(e) => handleChange(e)}>
                       <option value="">--Please choose a Muscle Group--</option>
                       <option value="Abdominals">Abdominals</option>
@@ -290,7 +298,7 @@ export default function UpdateExercise() {
                   </div>
         
                   <div className='label-input-div'>
-                    <label htmlFor="difficulty">Step 3:</label>
+                    <label htmlFor="difficulty">Difficulty:</label>
                     <select name="difficulty" id="difficulty" form="create-exercise-form" value={formData.difficulty} onChange={(e) => handleChange(e)}>
                       <option value="">--Please choose a Difficulty Level--</option>
                       <option value="Beginner">Beginner</option>
@@ -299,13 +307,12 @@ export default function UpdateExercise() {
                     </select>
                   </div>
         
-                  <div className='label-input-div'>
-                    <label htmlFor="difficulty">Step 4:</label>
-                    <button id='suggest-btn' onClick={handleAPICall}>Suggest Exercises</button>
+                  <div id='suggest-btn' className='label-input-div'>
+                    <button className='login-signup-btn' onClick={handleAPICall}>Suggest Exercises</button>
                   </div>
         
                   <div className='label-input-div'>
-                    <label htmlFor="name">Step 5:</label>
+                    <label htmlFor="name">Name:</label>
                     <input 
                       type="text"
                       name="name"
@@ -316,7 +323,7 @@ export default function UpdateExercise() {
                   </div>
         
                   <div className='label-input-div'>
-                    <label htmlFor="equipment">Step 6:</label>
+                    <label htmlFor="equipment">Equipment:</label>
                     <input 
                       type="text"
                       name="equipment"
@@ -327,42 +334,39 @@ export default function UpdateExercise() {
                   </div>
         
                   <div className='label-input-div' >
-                    <label htmlFor="instructions">Step 7:</label>
+                    <label htmlFor="instructions">Instructions:</label>
                     <input 
                       type="text"
                       name="instructions"
                       placeholder='Enter Instructions'
                       value={formData.instructions} 
                       onChange={(e) => handleChange(e)}
-                      id='label-input-instructions'
                     />
                   </div>
         
                   <div className='label-input-div' >
-                    <label htmlFor="sets">Step 8:</label>
+                    <label htmlFor="sets">Sets:</label>
                     <input 
                       type="number"
                       name="sets"
                       placeholder='Enter # of Sets'
                       value={formData.sets} 
                       onChange={(e) => handleChange(e)}
-                      id='label-input-instructions'
                     />
                   </div>
         
                   <div className='label-input-div' >
-                    <label htmlFor="reps">Step 9:</label>
+                    <label htmlFor="reps">Reps:</label>
                     <input 
                       type="number"
                       name="reps"
                       placeholder='Enter # of Reps'
                       value={formData.reps} 
                       onChange={(e) => handleChange(e)}
-                      id='label-input-instructions'
                     />
                   </div>
         
-                  <button type="submit" onClick={handleExerciseSubmit}>Submit</button>
+                  <button type="submit" className='login-signup-btn' onClick={handleExerciseSubmit}>Update Exercise</button>
                 </form>
               </div> 
             </div>
@@ -374,30 +378,36 @@ export default function UpdateExercise() {
                     <div key={j}className='apiExercise-cnt'>
     
                       <div className='inner-apiExercise-cnt'>
-                        <h3>Type: </h3><p> {exercise.type}</p>
+                        <h3>Type: </h3> 
+                        <p>{exercise.type}</p>
                       </div>
     
                       <div className='inner-apiExercise-cnt'>
-                        <h3>Muscle: </h3><p> {exercise.muscle}</p>
+                        <h3>Muscle: </h3>
+                        <p> {exercise.muscle}</p>
                       </div>
     
                       <div className='inner-apiExercise-cnt'>
-                        <h3>Difficulty: </h3><p> {exercise.difficulty}</p>
+                        <h3>Difficulty: </h3>
+                        <p> {exercise.difficulty}</p>
                       </div>
     
                       <div className='inner-apiExercise-cnt'>
-                        <h3>Name: </h3><p> {exercise.name}</p>
+                        <h3>Name: </h3>
+                        <p> {exercise.name}</p>
                       </div>
     
                       <div className='inner-apiExercise-cnt'>
-                        <h3>Equipment: </h3><p> {exercise.equipment}</p>
+                        <h3>Equipment: </h3>
+                        <p> {exercise.equipment}</p>
                       </div> 
     
                       <div className='inner-apiExercise-cnt'>
-                        <h3>Instructions: </h3><p> {exercise.instructions}</p>
+                        <h3>Instructions: </h3>
+                        <p> {exercise.instructions}</p>
                       </div>
     
-                      <button onClick={() => setSelectedExercise(exercise)}>Pin Exercise</button>
+                      <button className='login-signup-btn' onClick={() => setSelectedExercise(exercise)}>Pin Exercise</button>
                     </div>
                   ))}
                 </div>
@@ -407,8 +417,7 @@ export default function UpdateExercise() {
     
     
           )
-        }
-
-        </>
-  )
+        }    
+    </>
+      )
 }

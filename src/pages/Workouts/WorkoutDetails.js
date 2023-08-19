@@ -85,8 +85,8 @@ export default function WorkoutDetails() {
       </div>
       
       <div style ={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} className='controls'>
-        <Link className='workout-details-controls' to={`/workouts/${id}/update`}>Change Workout Date</Link>
-        <button className='workout-details-controls white-button ' onClick={removeWorkout}>Delete Workout</button>
+        <Link className='workout-details-controls' style={{width: '213px'}} to={`/workouts/${id}/update`}>Edit Workout Date</Link>
+        <button style={{marginBottom: '40px', width: '213px'}} className='workout-details-controls white-button ' onClick={removeWorkout}>Delete Workout</button>
         <Link className='workout-details-controls' style={{width: '213px'}} to={`/workouts/${id}/exercises/create`}>Create New Exercise</Link>
       </div>
       
@@ -104,8 +104,8 @@ export default function WorkoutDetails() {
           <h4>Reps:</h4><p> {exercise.reps}</p>
           <h4>Sets:</h4><p> {exercise.sets}</p>
           <div style ={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <Link className='workout-details-controls' to={`/workouts/${id}/exercises/${exercise._id}/update`}>Edit Exercise</Link>
-            <button className='workout-details-controls white-button' onClick={() => removeExercise(exercise._id)}>Delete Exercise</button>
+            <Link className='workout-details-controls' style={{width: '213px'}} to={`/workouts/${id}/exercises/${exercise._id}/update`}>Edit Exercise</Link>
+            <button style={{width: '213px'}} className='workout-details-controls white-button' onClick={() => removeExercise(exercise._id)}>Delete Exercise</button>
           </div>
 
         </div> 

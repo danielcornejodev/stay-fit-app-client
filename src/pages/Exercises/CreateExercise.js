@@ -35,7 +35,12 @@ export default function CreateExercise() {
         setFormData({
           name: '',
           type: '',
-          muscle: ''
+          muscle: '',
+          equipment: '',
+          difficulty: '',
+          instructions: '',
+          sets: null,
+          reps: null
         });
 
 				navigate(`/workouts/${id}`);
@@ -74,6 +79,18 @@ export default function CreateExercise() {
 
   return (
 <>
+    <div>
+      <video 
+      width="100%" 
+      loop
+      muted
+      autoPlay
+      preload='auto'
+      src='/assets/pressandclean.mp4'
+      type='video/mp4'
+      >
+      </video>
+    </div>
     {selectedExercise ? (
       <>
       <div className='outer-form-page-cnt'>
