@@ -21,7 +21,7 @@ export default function CreateWorkoutsPage() {
         )
       }
 
-      const id = user.id;
+      const id = user._id;
 
       const handleSubmit = (e) => {
         e.preventDefault();
