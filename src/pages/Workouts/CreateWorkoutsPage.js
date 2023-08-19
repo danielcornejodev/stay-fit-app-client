@@ -35,7 +35,7 @@ export default function CreateWorkoutsPage() {
       return (
 
       <div id='main-create-workout-div'>
-        <div >
+        <div style={{width: '100%'}}>
           <video 
           width="100%" 
           loop
