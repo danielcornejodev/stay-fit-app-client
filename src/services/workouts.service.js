@@ -25,8 +25,8 @@ class WorkoutsService {
   };
 
   // GET /api/workouts
-  getAllWorkouts = () => {
-    return this.api.get('/api/workouts');
+  getAllWorkouts = (userID) => {
+    return this.api.get(`/api/workouts/${userID}`);
   };
  
 

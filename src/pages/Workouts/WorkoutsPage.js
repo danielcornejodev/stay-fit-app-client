@@ -2,16 +2,23 @@ import React, { useContext, useEffect, useState } from 'react';
 import WorkoutContext from '../../context/workouts.context';
 import workoutsService from '../../services/workouts.service';
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/auth.context"; 
 
 export default function WorkoutsPage() {
+
+  const { user } = useContext(AuthContext); 
 
   const { workouts, setWorkouts } = useContext(WorkoutContext);
   const [loading, setLoading] = useState(true);
 
+  const userID = user._id;
+
   useEffect(() => {
-    workoutsService.getAllWorkouts()
+    console.log(userID);
+    workoutsService.getAllWorkouts(userID)
       .then(res => {
-        setWorkouts(res.data.workouts)
+        console.log(res.data)
+        setWorkouts(res.data.theUser.workouts)
         setLoading(false);// Set loading to false once data is fetched
       })
       .catch((error) => console.log(error));
