@@ -29,7 +29,6 @@ export default function CreateWorkoutsPage() {
 
       const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(id)
 
         handleWorkoutSubmit(formData)
         

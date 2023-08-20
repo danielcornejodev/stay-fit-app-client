@@ -53,7 +53,7 @@ export default function WorkoutsPage() {
       ) : (
         workouts.map((workout, i) => (
           <div key={i} className='workout-entry'>
-            <Link to={`/workouts/${workout._id}`} style={{textDecoration: 'none'}}>
+            <Link to={`/workouts/workout/${workout._id}`} style={{textDecoration: 'none'}}>
               <div className='workout-div'>
                 {formatDate(workout.date)}
               </div>

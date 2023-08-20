@@ -12,7 +12,9 @@ export default function WorkoutDetails() {
 
   useEffect(() => {
     workoutsService.getWorkout(id)
-      .then((res) => setWorkoutDetails(res.data))
+      .then((res) => {
+        setWorkoutDetails(res.data);
+      })
       .catch((error) => console.log(error));
   }, [id]);
 
@@ -38,24 +40,6 @@ export default function WorkoutDetails() {
     .catch((error) => console.log(error));
   }
 
-
-  // const removeExercise = (_id) => {
-  //   exercisesService.deleteExercise(_id)
-  //   .then((res) => {
-  //     workoutsService.getWorkout(id)
-  //       .then((res) => {
-  //         setWorkoutDetails({
-  //           ...workoutDetails,
-  //           workout: {
-  //             ...workoutDetails.workout,
-  //             exercises: res.data.workout.exercises
-  //           }
-  //         });
-  //       })
-  //       .catch((error) => console.log(error));
-  //   })
-  //   .catch((error) => console.log(error));
-  // }
 
   //instead of making second API call
   const removeExercise = (_id) => {

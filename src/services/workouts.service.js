@@ -30,9 +30,9 @@ class WorkoutsService {
   };
  
 
-  // GET /api/workouts/:id
+  // GET a single workout
   getWorkout = id => {
-    return this.api.get(`/api/workouts/${id}`);
+    return this.api.get(`/api/workouts/workout/${id}`);
   };
 
   // PUT /api/workouts/:id
