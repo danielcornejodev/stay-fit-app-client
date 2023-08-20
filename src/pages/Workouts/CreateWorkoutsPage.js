@@ -25,8 +25,6 @@ export default function CreateWorkoutsPage() {
         )
       }
 
-      const id = user._id;
-
       const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -34,7 +32,8 @@ export default function CreateWorkoutsPage() {
         
           setFormData({
             date: '',
-            exercises: []
+            exercises: [],
+            owner: user
           })
         ;
 

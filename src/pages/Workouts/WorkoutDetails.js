@@ -77,7 +77,6 @@ export default function WorkoutDetails() {
       <div id='main-exercise-div'>
       {exercises.map((exercise, index) => (
         <div className='exercises-div' key={index}>
-        {console.log(exercise)}
           <h3>Exercise {index + 1}</h3>
           <h4>Name:</h4><p> {exercise.name}</p>
           <h4>Type:</h4><p> {exercise.type}</p>
