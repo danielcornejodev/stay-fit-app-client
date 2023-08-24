@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import workoutsService from '../../services/workouts.service';
 import exercisesService from '../../services/exercises.service';
-
+import { AuthContext } from "../../context/auth.context"; 
 
 export default function WorkoutDetails() {
+
+  const { user } = useContext(AuthContext); 
+
   const { id } = useParams();
   const [workoutDetails, setWorkoutDetails] = useState(null);
 
   const navigate = useNavigate();
+
+  const userID = user._id;
 
   useEffect(() => {
     workoutsService.getWorkout(id)
@@ -32,7 +37,7 @@ export default function WorkoutDetails() {
   }
 
   const removeWorkout = () => {
-    workoutsService.deleteWorkout(id)
+    workoutsService.deleteWorkout(id, userID)
     .then((res) => {
       setWorkoutDetails(null)
       navigate(`/workouts`);

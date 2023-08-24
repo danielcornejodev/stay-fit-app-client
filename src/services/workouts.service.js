@@ -41,8 +41,8 @@ class WorkoutsService {
   };
 
   // DELETE /api/workouts/:id
-  deleteWorkout = id => {
-    return this.api.delete(`/api/workouts/${id}`);
+  deleteWorkout = (id, userID) => {
+    return this.api.delete(`/api/workouts/${id}/${userID}`);
   };
 }
 

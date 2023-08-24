@@ -14,10 +14,8 @@ export default function WorkoutsPage() {
   const userID = user._id;
 
   useEffect(() => {
-    console.log(userID);
     workoutsService.getAllWorkouts(userID)
       .then(res => {
-        console.log(res.data)
         setWorkouts(res.data.theUser.workouts)
         setLoading(false);// Set loading to false once data is fetched
       })
