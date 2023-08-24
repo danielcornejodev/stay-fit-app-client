@@ -26,7 +26,7 @@ function App() {
           <Route path='/' element={<HomePage />} />
           <Route path='/workouts/create' element={<IsPrivate> <CreateWorkoutsPage /> </IsPrivate>} />
           <Route path='/workouts' element={<IsPrivate> <WorkoutsPage /> </IsPrivate>} />
-          <Route path='/workouts/:id' element={<IsPrivate> <WorkoutDetails /> </IsPrivate>} />
+          <Route path='/workouts/workout/:id' element={<IsPrivate> <WorkoutDetails /> </IsPrivate>} />
           <Route path='/workouts/:id/update' element={<IsPrivate> <UpdateWorkoutPage /> </IsPrivate>} />
           <Route path='/workouts/:id/exercises/create' element={<IsPrivate> <CreateExercise /> </IsPrivate>} />
           <Route path='/workouts/:id/exercises/:exerciseID/update' element={<IsPrivate> <UpdateExercise /> </IsPrivate>} />

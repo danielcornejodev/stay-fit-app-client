@@ -2,16 +2,21 @@ import React, { useContext, useEffect, useState } from 'react';
 import WorkoutContext from '../../context/workouts.context';
 import workoutsService from '../../services/workouts.service';
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/auth.context"; 
 
 export default function WorkoutsPage() {
+
+  const { user } = useContext(AuthContext); 
 
   const { workouts, setWorkouts } = useContext(WorkoutContext);
   const [loading, setLoading] = useState(true);
 
+  const userID = user._id;
+
   useEffect(() => {
-    workoutsService.getAllWorkouts()
+    workoutsService.getAllWorkouts(userID)
       .then(res => {
-        setWorkouts(res.data.workouts)
+        setWorkouts(res.data.theUser.workouts)
         setLoading(false);// Set loading to false once data is fetched
       })
       .catch((error) => console.log(error));
@@ -46,7 +51,7 @@ export default function WorkoutsPage() {
       ) : (
         workouts.map((workout, i) => (
           <div key={i} className='workout-entry'>
-            <Link to={`/workouts/${workout._id}`} style={{textDecoration: 'none'}}>
+            <Link to={`/workouts/workout/${workout._id}`} style={{textDecoration: 'none'}}>
               <div className='workout-div'>
                 {formatDate(workout.date)}
               </div>
