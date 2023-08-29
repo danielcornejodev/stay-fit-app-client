@@ -25,14 +25,14 @@ class WorkoutsService {
   };
 
   // GET /api/workouts
-  getAllWorkouts = () => {
-    return this.api.get('/api/workouts');
+  getAllWorkouts = (userID) => {
+    return this.api.get(`/api/workouts/${userID}`);
   };
  
 
-  // GET /api/workouts/:id
+  // GET a single workout
   getWorkout = id => {
-    return this.api.get(`/api/workouts/${id}`);
+    return this.api.get(`/api/workouts/workout/${id}`);
   };
 
   // PUT /api/workouts/:id
@@ -41,8 +41,8 @@ class WorkoutsService {
   };
 
   // DELETE /api/workouts/:id
-  deleteWorkout = id => {
-    return this.api.delete(`/api/workouts/${id}`);
+  deleteWorkout = (id, userID) => {
+    return this.api.delete(`/api/workouts/${id}/${userID}`);
   };
 }
 

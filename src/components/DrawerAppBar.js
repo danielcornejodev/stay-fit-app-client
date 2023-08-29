@@ -121,9 +121,9 @@ function DrawerAppBar(props) {
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: 'center', color: 'black', fontWeight: '800', }}>   
             <ListItemText onClick={logOutUser}>Logout</ListItemText>
-            <span>{user && user.name}</span>
           </ListItemButton>
         </ListItem>
+        <p style={{fontWeight: 'bold', color: 'black'}}><br></br>{user && user.name}</p>
         </>
       )}
 

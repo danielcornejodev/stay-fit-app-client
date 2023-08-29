@@ -3,12 +3,16 @@ import WorkoutContext from '../../context/workouts.context';
 import { AuthContext } from "../../context/auth.context"; 
 
 export default function CreateWorkoutsPage() {
+    
+    const { user } = useContext(AuthContext); 
+
     const [formData, setFormData] = useState({
       date: '',
-      exercises: []
+      exercises: [],
+      owner: user
     });
 
-    const { user } = useContext(AuthContext); 
+
 
     const { handleWorkoutSubmit } = useContext(WorkoutContext);
 
@@ -21,16 +25,15 @@ export default function CreateWorkoutsPage() {
         )
       }
 
-      const id = user._id;
-
       const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(id)
+
         handleWorkoutSubmit(formData)
         
           setFormData({
             date: '',
-            exercises: []
+            exercises: [],
+            owner: user
           })
         ;
 

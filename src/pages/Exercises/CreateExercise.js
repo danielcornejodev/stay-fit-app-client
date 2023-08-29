@@ -43,7 +43,7 @@ export default function CreateExercise() {
           reps: null
         });
 
-				navigate(`/workouts/${id}`);
+				navigate(`/workouts/workout/${id}`);
 			})
 			.catch((err) => console.log({ err }));
 	};

@@ -1,8 +1,12 @@
-import React, {  useState } from 'react';
+import React, { useContext, useState } from 'react';
 import workoutsService from '../../services/workouts.service';
-import {  useParams, useNavigate } from 'react-router-dom'
+import {  useParams, useNavigate } from 'react-router-dom';
+import { AuthContext } from "../../context/auth.context"; 
 
 export default function UpdateWorkoutPage() {
+
+    const { user } = useContext(AuthContext); 
+
     const [formData, setFormData] = useState({
       date: ''
     });
@@ -24,7 +28,7 @@ export default function UpdateWorkoutPage() {
       const handleUpdateSubmit = (id, formData) => {
               workoutsService.updateWorkout(id, formData)
               .then((res) => {
-                navigate(`/workouts/${id}`);
+                navigate(`/workouts/workout/${id}`);
               })
               .catch((err) => console.log({ err }));
       };
@@ -36,29 +40,44 @@ export default function UpdateWorkoutPage() {
 
         handleUpdateSubmit(id, formData);
         
-            setFormData({
-            date: '',
-            exercises: [],
-            apiExercises: [] 
+        setFormData({
+          date: ''
         });
 
 
       };
 
       return (
-        <div id='workout-form-cnt'>
-        {/* {console.log(formData)} */}
-          <form id='workout-form' onSubmit={handleSubmit}>
-            <label>Select Date: </label>
-            <input 
-              type="date"
-              name="date"
-              value={formData.date}
-              onChange={(e) => handleChange(e)}
-            />
-            <br />
-            <button type="submit">Update Workout</button>
-          </form>
+        <div id='main-create-workout-div'>
+          <div style={{width: '100%'}}>
+            <video 
+            width="100%" 
+            loop
+            muted
+            autoPlay
+            preload='auto'
+            src='/assets/pexels-yan-krukov-8480550 (1080p).mp4'
+            type='video/mp4'
+            >
+            </video>
+          </div>
+          <div id='create-workout-div'>
+            <h1>Update Workout</h1>
+            <p>Select a date and create workout to begin adding exercises and planning your workout schedule.</p>
+          </div>
+          <div id='workout-form-cnt'>
+            <form id='workout-form' onSubmit={handleSubmit}>
+              <label>Select Date: </label>
+              <input 
+                type="date"
+                name="date"
+                value={formData.date}
+                onChange={(e) => handleChange(e)}
+              />
+              <br />
+              <button className='login-signup-btn' type="submit">Update Workout</button>
+            </form>
+        </div>
         </div>
       )
 }

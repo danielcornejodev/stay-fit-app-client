@@ -1,18 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import workoutsService from '../../services/workouts.service';
 import exercisesService from '../../services/exercises.service';
-
+import { AuthContext } from "../../context/auth.context"; 
 
 export default function WorkoutDetails() {
+
+  const { user } = useContext(AuthContext); 
+
   const { id } = useParams();
   const [workoutDetails, setWorkoutDetails] = useState(null);
 
   const navigate = useNavigate();
 
+  const userID = user._id;
+
   useEffect(() => {
     workoutsService.getWorkout(id)
-      .then((res) => setWorkoutDetails(res.data))
+      .then((res) => {
+        setWorkoutDetails(res.data);
+      })
       .catch((error) => console.log(error));
   }, [id]);
 
@@ -30,7 +37,7 @@ export default function WorkoutDetails() {
   }
 
   const removeWorkout = () => {
-    workoutsService.deleteWorkout(id)
+    workoutsService.deleteWorkout(id, userID)
     .then((res) => {
       setWorkoutDetails(null)
       navigate(`/workouts`);
@@ -38,24 +45,6 @@ export default function WorkoutDetails() {
     .catch((error) => console.log(error));
   }
 
-
-  // const removeExercise = (_id) => {
-  //   exercisesService.deleteExercise(_id)
-  //   .then((res) => {
-  //     workoutsService.getWorkout(id)
-  //       .then((res) => {
-  //         setWorkoutDetails({
-  //           ...workoutDetails,
-  //           workout: {
-  //             ...workoutDetails.workout,
-  //             exercises: res.data.workout.exercises
-  //           }
-  //         });
-  //       })
-  //       .catch((error) => console.log(error));
-  //   })
-  //   .catch((error) => console.log(error));
-  // }
 
   //instead of making second API call
   const removeExercise = (_id) => {
@@ -93,7 +82,6 @@ export default function WorkoutDetails() {
       <div id='main-exercise-div'>
       {exercises.map((exercise, index) => (
         <div className='exercises-div' key={index}>
-        {console.log(exercise)}
           <h3>Exercise {index + 1}</h3>
           <h4>Name:</h4><p> {exercise.name}</p>
           <h4>Type:</h4><p> {exercise.type}</p>
