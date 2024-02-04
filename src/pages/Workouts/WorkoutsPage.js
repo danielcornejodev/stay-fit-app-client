@@ -20,7 +20,7 @@ export default function WorkoutsPage() {
         setLoading(false);// Set loading to false once data is fetched
       })
       .catch((error) => console.log(error));
-  }, [])
+  }, [userID, setWorkouts])
 
   function formatDate(dateString) {
     const year = dateString.slice(0, 4);
