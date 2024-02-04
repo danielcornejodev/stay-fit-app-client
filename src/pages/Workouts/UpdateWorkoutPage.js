@@ -1,11 +1,12 @@
-import React, { useContext, useState } from 'react';
+// import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import workoutsService from '../../services/workouts.service';
 import {  useParams, useNavigate } from 'react-router-dom';
-import { AuthContext } from "../../context/auth.context"; 
+// import { AuthContext } from "../../context/auth.context"; 
 
 export default function UpdateWorkoutPage() {
 
-    const { user } = useContext(AuthContext); 
+    // const { user } = useContext(AuthContext); 
 
     const [formData, setFormData] = useState({
       date: ''
