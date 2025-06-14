@@ -258,6 +258,7 @@ input[type="date"]::placeholder {
 
 #create-workout-div {
   width: 390px;
+  padding: 20px 0 0 0;
 }
 
 #main-home-cnt {
@@ -267,6 +268,7 @@ input[type="date"]::placeholder {
 }
 
 #home-div {
+  padding: 40px 0 80px 0;
   font-weight: 300;
 }
 

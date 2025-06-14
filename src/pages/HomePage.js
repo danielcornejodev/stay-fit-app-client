@@ -5,7 +5,7 @@ export default function HomePage() {
   return (
     <div id='main-home-cnt'>
       <div>
-        <video 
+        {/* <video 
         width="100%" 
         loop
         muted
@@ -14,7 +14,12 @@ export default function HomePage() {
         src='/assets/pexels-tima-miroshnichenko-5319759 (2160p).mp4'
         type='video/mp4'
         >
-        </video>
+        </video> */}
+        <img 
+          src='/assets/pexels-victorfreitas-841130.jpg'
+          alt='Fitness Background'
+          style={{ width: '100%', height: 'auto' }}                                                                                                     
+        />
       </div>
       <div id='home-div'>
         <h1>Fitness Planning</h1>

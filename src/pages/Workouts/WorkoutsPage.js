@@ -34,7 +34,7 @@ export default function WorkoutsPage() {
 
     <div id='workout-cnt'>
       <div>
-        <video 
+        {/* <video 
         width="100%" 
         loop
         muted
@@ -43,7 +43,12 @@ export default function WorkoutsPage() {
         src='/assets/girlcurling.mp4'
         type='video/mp4'
         >
-        </video>
+        </video> */}
+        <img 
+          src='/assets/pexels-victorfreitas-791763.jpg'
+          alt='Fitness Background'
+          style={{ width: '100%', height: 'auto' }}
+        />
       </div>
       <h1>Workout Schedule</h1>
       {loading ? ( // Conditional rendering based on the loading state

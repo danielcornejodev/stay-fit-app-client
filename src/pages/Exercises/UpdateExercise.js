@@ -82,7 +82,7 @@ export default function UpdateExercise() {
   return (
     <>
         <div>
-          <video 
+          {/* <video 
           width="100%" 
           loop
           muted
@@ -91,7 +91,12 @@ export default function UpdateExercise() {
           src='/assets/deadlift.mp4'
           type='video/mp4'
           >
-          </video>
+          </video> */}
+          <img 
+            src='/assets/pexels-pixabay-163351.jpg'
+            alt='Fitness Background'
+            style={{ width: '100%', height: 'auto' }}
+          />
         </div>
         {selectedExercise ? (
           <>

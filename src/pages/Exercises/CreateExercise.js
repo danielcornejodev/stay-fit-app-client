@@ -31,18 +31,6 @@ export default function CreateExercise() {
     exercisesService.createExercise(id, formData)
 			.then((res) => {
 				setExercises([...exercises, res.data.exercises]);
-
-        setFormData({
-          name: '',
-          type: '',
-          muscle: '',
-          equipment: '',
-          difficulty: '',
-          instructions: '',
-          sets: null,
-          reps: null
-        });
-
 				navigate(`/workouts/workout/${id}`);
 			})
 			.catch((err) => console.log({ err }));
@@ -80,7 +68,7 @@ export default function CreateExercise() {
   return (
 <>
     <div>
-      <video 
+      {/* <video 
       width="100%" 
       loop
       muted
@@ -89,13 +77,18 @@ export default function CreateExercise() {
       src='/assets/pressandclean.mp4'
       type='video/mp4'
       >
-      </video>
+      </video> */}
+      <img 
+        src='/assets/pexels-leonardho-1552249.jpg'
+        alt='Fitness Background'
+        style={{ width: '100%', height: 'auto' }}
+      />
     </div>
     {selectedExercise ? (
       <>
       <div className='outer-form-page-cnt'>
         <div className='form-page-cnt'>
-          <h1>Create Exercise</h1>
+          <h1>Suggest Exercise</h1>
   
           <form className='form' id='create-exercise-form' >
   
@@ -149,7 +142,8 @@ export default function CreateExercise() {
             <div id='suggest-btn' className='label-input-div'>
               <button className='login-signup-btn' onClick={handleAPICall}>Suggest Exercises</button>
             </div>
-  
+
+            <h1>Create Exercise</h1>
             <div className='label-input-div'>
               <label htmlFor="name">Name:</label>
               <input 
@@ -254,7 +248,7 @@ export default function CreateExercise() {
         <>
         <div className='outer-form-page-cnt'>
           <div className='form-page-cnt'>
-            <h1>Create Exercise</h1>
+            <h1>Suggest Exercise</h1>
     
             <form className='form' id='create-exercise-form' >
     
@@ -308,7 +302,8 @@ export default function CreateExercise() {
               <div id='suggest-btn' className='label-input-div'>
                 <button className='login-signup-btn' onClick={handleAPICall}>Suggest Exercises</button>
               </div>
-    
+
+            <h1>Create Exercise</h1>
               <div className='label-input-div'>
                 <label htmlFor="name">Name:</label>
                 <input 

@@ -21,29 +21,25 @@ function SignupPage(props) {
 
   
   const handleSignupSubmit = (e) => {
-      e.preventDefault();
-      // Create an object representing the request body
-      const requestBody = { email, password, name };
+    e.preventDefault();
+    const requestBody = { email, password, name };
 
-      // Make an axios request to the API
-      // If the POST request is a successful redirect to the login page
-      // If the request resolves with an error, set the error message in the state
-      // axios.post(`${API_URL}/auth/signup`, requestBody)
-      authService.signup(requestBody)
+    authService.signup(requestBody)
       .then((response) => {
-          navigate('/login');
+        navigate('/login');
       })
       .catch((error) => {
-          const errorDescription = error.response.data.message;
-          setErrorMessage(errorDescription);
-      })
+        const errorDescription =
+          error.response?.data?.message || "An unexpected error occurred.";
+        setErrorMessage(errorDescription);
+      });
   };
 
   
   return (
     <>
     <div>
-      <video 
+      {/* <video 
       width="100%" 
       loop
       muted
@@ -52,7 +48,12 @@ function SignupPage(props) {
       src='/assets/video (2160p) woman squats.mp4'
       type='video/mp4'
       >
-      </video>
+      </video> */}
+      <img 
+        src='/assets/pexels-willpicturethis-1954524.jpg'
+        alt='Fitness Background'
+        style={{ width: '100%', height: 'auto' }}
+      />
     </div>
     <div style={{marginBottom: '50px'}} className="outer-form-page-cnt">
       <div className="form-page-cnt">

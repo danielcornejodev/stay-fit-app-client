@@ -44,7 +44,7 @@ export default function CreateWorkoutsPage() {
 
       <div id='main-create-workout-div'>
         <div style={{width: '100%'}}>
-          <video 
+          {/* <video 
           width="100%" 
           loop
           muted
@@ -53,7 +53,12 @@ export default function CreateWorkoutsPage() {
           src='/assets/pexels-yan-krukov-8480550 (1080p).mp4'
           type='video/mp4'
           >
-          </video>
+          </video> */}
+          <img 
+            src='/assets/pexels-scottwebb-28061.jpg'
+            alt='Fitness Background'
+            style={{ width: '100%', height: 'auto' }}
+          />
         </div>
         <div id='create-workout-div'>
           <h1>Create Workout</h1>

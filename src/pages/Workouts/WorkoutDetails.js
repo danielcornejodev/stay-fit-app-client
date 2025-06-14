@@ -68,6 +68,11 @@ export default function WorkoutDetails() {
   
   return (
     <>
+      <img 
+        src='/assets/pexels-823sl-2294361.jpg'
+        alt='Fitness Background'
+        style={{ width: '100%', height: 'auto' }}
+      />
       <div>
         <h1>Workout Details</h1>
         <h1>{formatDate(workoutDetails.workout.date)}</h1>

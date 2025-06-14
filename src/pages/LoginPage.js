@@ -48,7 +48,7 @@ function LoginPage(props) {
   return (
     <>
     <div>
-      <video 
+      {/* <video 
       width="100%" 
       loop
       muted
@@ -57,7 +57,12 @@ function LoginPage(props) {
       src='/assets/pullups video.mp4'
       type='video/mp4'
       >
-      </video>
+      </video> */}
+      <img 
+        src='/assets/pexels-olly-868704.jpg'
+        alt='Fitness Background'
+        style={{ width: '100%', height: 'auto' }}
+      />
     </div>
     <div style={{marginBottom: '50px'}} className='outer-form-page-cnt'>
       <div className='form-page-cnt'>
