@@ -8,45 +8,65 @@ class WorkoutsService {
 
     // Automatically set JWT token in the headers for every request
     this.api.interceptors.request.use(config => {
-      // Retrieve the JWT token from the local storage
       const storedToken = localStorage.getItem('authToken');
-
       if (storedToken) {
         config.headers = { Authorization: `Bearer ${storedToken}` };
       }
-
       return config;
     });
   }
 
-  // POST /api/projects
-  createWorkout = requestBody => {
-    return this.api.post('/api/workouts', requestBody);
-  };
+  // POST /api/workouts
+  async createWorkout(requestBody) {
+    try {
+      const res = await this.api.post('/api/workouts', requestBody);
+      return res;
+    } catch (error) {
+      throw error;
+    }
+  }
 
   // GET /api/workouts
-  getAllWorkouts = (userID) => {
-    return this.api.get(`/api/workouts/${userID}`);
-  };
- 
+  async getAllWorkouts(userID) {
+    try {
+      const res = await this.api.get(`/api/workouts/${userID}`);
+      return res;
+    } catch (error) {
+      throw error;
+    }
+  }
 
   // GET a single workout
-  getWorkout = id => {
-    return this.api.get(`/api/workouts/workout/${id}`);
-  };
+  async getWorkout(id) {
+    try {
+      const res = await this.api.get(`/api/workouts/workout/${id}`);
+      return res;
+    } catch (error) {
+      throw error;
+    }
+  }
 
   // PUT /api/workouts/:id
-  updateWorkout = (id, requestBody) => {
-    return this.api.put(`/api/workouts/${id}`, requestBody);
-  };
+  async updateWorkout(id, requestBody) {
+    try {
+      const res = await this.api.put(`/api/workouts/${id}`, requestBody);
+      return res;
+    } catch (error) {
+      throw error;
+    }
+  }
 
   // DELETE /api/workouts/:id
-  deleteWorkout = (id, userID) => {
-    return this.api.delete(`/api/workouts/${id}/${userID}`);
-  };
+  async deleteWorkout(id, userID) {
+    try {
+      const res = await this.api.delete(`/api/workouts/${id}/${userID}`);
+      return res;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
-// Create one instance object
 const workoutsService = new WorkoutsService();
 
 export default workoutsService;

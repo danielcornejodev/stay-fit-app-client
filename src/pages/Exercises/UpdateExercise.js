@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import exercisesService from '../../services/exercises.service';
 import axios from 'axios';
 
 export default function UpdateExercise() {
+  const { id, exerciseID } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const initialExercise = location.state?.exercise;
+
+  // 1. Initialize formData with empty values
   const [formData, setFormData] = useState({
     name: '',
     type: '',
@@ -11,19 +17,31 @@ export default function UpdateExercise() {
     equipment: '',
     difficulty: '',
     instructions: '',
-    sets: null, 
+    sets: null,
     reps: null
   });
+
+  // 2. When initialExercise is available, set formData
+  useEffect(() => {
+    if (initialExercise) {
+      setFormData({
+        name: initialExercise.name || '',
+        type: initialExercise.type || '',
+        muscle: initialExercise.muscle || '',
+        equipment: initialExercise.equipment || '',
+        difficulty: initialExercise.difficulty || '',
+        instructions: initialExercise.instructions || '',
+        sets: initialExercise.sets || null,
+        reps: initialExercise.reps || null
+      });
+    }
+  }, [initialExercise]);
 
   const [exercises, setExercises] = useState([]);
   const [apiExercises, setAPIExercises] = useState([]);
 
   const [selectedExercise, setSelectedExercise] = useState(null);
-  
-  const { id } = useParams(); 
-  const { exerciseID } = useParams();
-	
-  const navigate = useNavigate();
+
 
 	const handleExerciseSubmit = (e) => {
     e.preventDefault();
@@ -31,18 +49,7 @@ export default function UpdateExercise() {
     exercisesService.updateExercise(exerciseID, formData)
 			.then((res) => {
 				setExercises([...exercises, res.data.exercises]);
-        setFormData({
-          name: '',
-          type: '',
-          muscle: '',
-          equipment: '',
-          difficulty: '',
-          instructions: '',
-          sets: null, 
-          reps: null
-        })
-      ;
-				navigate(`/workouts/${id}`);
+				navigate(`/workouts/workout/${id}`);
 			})
 			.catch((err) => console.log({ err }));
 	};
@@ -74,10 +81,7 @@ export default function UpdateExercise() {
     });
   };
   
-
   
-
-
 
   return (
     <>

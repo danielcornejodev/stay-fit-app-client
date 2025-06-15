@@ -5,26 +5,26 @@ import exercisesService from '../../services/exercises.service';
 import { AuthContext } from "../../context/auth.context"; 
 
 export default function WorkoutDetails() {
-
   const { user } = useContext(AuthContext); 
-
   const { id } = useParams();
   const [workoutDetails, setWorkoutDetails] = useState(null);
-
   const navigate = useNavigate();
-
   const userID = user._id;
 
   useEffect(() => {
-    workoutsService.getWorkout(id)
-      .then((res) => {
+    const fetchWorkout = async () => {
+      try {
+        const res = await workoutsService.getWorkout(id);
         setWorkoutDetails(res.data);
-      })
-      .catch((error) => console.log(error));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchWorkout();
   }, [id]);
 
   if (!workoutDetails) {
-    return <div>Loading...</div>; // You can show a loading indicator here
+    return <div>Loading...</div>;
   }
 
   const exercises = workoutDetails.workout.exercises;
@@ -36,36 +36,34 @@ export default function WorkoutDetails() {
     return `${month}/${day}/${year}`;
   }
 
-  const removeWorkout = () => {
-    workoutsService.deleteWorkout(id, userID)
-    .then((res) => {
-      setWorkoutDetails(null)
+  const removeWorkout = async () => {
+    try {
+      await workoutsService.deleteWorkout(id, userID);
+      setWorkoutDetails(null);
       navigate(`/workouts`);
-    })
-    .catch((error) => console.log(error));
-  }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
+  const removeExercise = async (_id) => {
+    try {
+      await exercisesService.deleteExercise(_id);
+      setWorkoutDetails(prevWorkoutDetails => {
+        const updatedExercises = prevWorkoutDetails.workout.exercises.filter(exercise => exercise._id !== _id);
+        return {
+          ...prevWorkoutDetails,
+          workout: {
+            ...prevWorkoutDetails.workout,
+            exercises: updatedExercises
+          }
+        };
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  //instead of making second API call
-  const removeExercise = (_id) => {
-    exercisesService.deleteExercise(_id)
-      .then(() => {
-        setWorkoutDetails(prevWorkoutDetails => {
-          const updatedExercises = prevWorkoutDetails.workout.exercises.filter(exercise => exercise._id !== _id);
-  
-          return {
-            ...prevWorkoutDetails,
-            workout: {
-              ...prevWorkoutDetails.workout,
-              exercises: updatedExercises
-            }
-          };
-        });
-      })
-      .catch((error) => console.log(error));
-  }
-  
-  
   return (
     <>
       <img 
@@ -89,23 +87,30 @@ export default function WorkoutDetails() {
         <div className='exercises-div' key={index}>
           <h3>Exercise {index + 1}</h3>
           <h4>Name:</h4><p> {exercise.name}</p>
-          <h4>Type:</h4><p> {exercise.type}</p>
-          <h4>Muscle:</h4><p> {exercise.muscle}</p>
-          <h4>Difficulty:</h4><p> {exercise.difficulty}</p>
           <h4>Equipment:</h4><p> {exercise.equipment}</p>
           <h4>Instructions:</h4><p> {exercise.instructions}</p>
-          <h4>Reps:</h4><p> {exercise.reps}</p>
           <h4>Sets:</h4><p> {exercise.sets}</p>
+          <h4>Reps:</h4><p> {exercise.reps}</p>
           <div style ={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <Link className='workout-details-controls' style={{width: '213px'}} to={`/workouts/${id}/exercises/${exercise._id}/update`}>Edit Exercise</Link>
-            <button style={{width: '213px'}} className='workout-details-controls white-button' onClick={() => removeExercise(exercise._id)}>Delete Exercise</button>
+            <Link
+              className='workout-details-controls'
+              style={{width: '213px'}}
+              to={`/workouts/${id}/exercises/${exercise._id}/update`}
+              state={{ exercise }} // Pass exercise state for editing
+            >
+              Edit Exercise
+            </Link>
+            <button
+              style={{width: '213px'}}
+              className='workout-details-controls white-button'
+              onClick={() => removeExercise(exercise._id)}
+            >
+              Delete Exercise
+            </button>
           </div>
-
         </div> 
       ))}
       </div>
-
-
     </>
   );
 }

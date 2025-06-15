@@ -8,44 +8,65 @@ class ExercisesService {
 
     // Automatically set JWT token in the headers for every request
     this.api.interceptors.request.use(config => {
-      // Retrieve the JWT token from the local storage
       const storedToken = localStorage.getItem('authToken');
-
       if (storedToken) {
         config.headers = { Authorization: `Bearer ${storedToken}` };
       }
-
       return config;
     });
   }
 
+  // CREATE a new exercise for a workout
+  async createExercise(workoutId, requestBody) {
+    try {
+      const res = await this.api.post(`/api/exercises/workouts/${workoutId}/exercises/create`, requestBody);
+      return res;
+    } catch (error) {
+      throw error;
+    }
+  }
 
-  createExercise = (id, requestBody) => {
-    return this.api.post(`/api/exercises/workouts/${id}/exercises/create`, requestBody);
-  };
+  // GET all exercises
+  async getAllExercises() {
+    try {
+      const res = await this.api.get('/api/exercises');
+      return res;
+    } catch (error) {
+      throw error;
+    }
+  }
 
-  // GET /api/exercises
-  getAllExercises = (id) => {
-    return this.api.get(`/api/exercises/workouts/${id}`);
-  };
+  // GET a single exercise
+  async getExercise(id) {
+    try {
+      const res = await this.api.get(`/api/exercises/${id}`);
+      return res;
+    } catch (error) {
+      throw error;
+    }
+  }
 
-  // GET /api/exercises/:id
-  getExercise = id => {
-    return this.api.get(`/api/exercises/${id}`);
-  };
+  // UPDATE an exercise
+  async updateExercise(id, requestBody) {
+    try {
+      const res = await this.api.put(`/api/exercises/${id}`, requestBody);
+      return res;
+    } catch (error) {
+      throw error;
+    }
+  }
 
-  // PUT /api/exercises/:id
-  updateExercise = (id, requestBody) => {
-    return this.api.put(`/api/exercises/${id}`, requestBody);
-  };
-
-  // DELETE /api/exercises/:id
-  deleteExercise = id => {
-    return this.api.delete(`/api/exercises/${id}`);
-  };
+  // DELETE an exercise
+  async deleteExercise(id) {
+    try {
+      const res = await this.api.delete(`/api/exercises/${id}`);
+      return res;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
-// Create one instance object
 const exercisesService = new ExercisesService();
 
 export default exercisesService;
