@@ -56,7 +56,7 @@ export default function CreateExercise() {
       }
     })
     .then((res) => {
-      setAPIExercises([...apiExercises, res.data]);
+      setAPIExercises(prev => [...prev, ...res.data]);
     })
     .catch((err) => {
       console.log({ err });
@@ -231,11 +231,11 @@ export default function CreateExercise() {
                 </div> 
 
 
-                <div className='inner-apiExercise-cnt'>
+                <div id='inner-apiExercise-cnt-instructions' className='inner-apiExercise-cnt'>
                   <h3>Instructions: </h3><p> {selectedExercise.instructions}</p>
                 </div>
 
-                <button className='login-signup-btn' onClick={() => setSelectedExercise(null)}>Unpin Exercise</button>
+                <button id='pin-exercise-btn' className='login-signup-btn' onClick={() => setSelectedExercise(null)}>Unpin Exercise</button>
               </div>
 
           </div>
@@ -365,46 +365,44 @@ export default function CreateExercise() {
         </div>
         <div>
           <h1>Suggested Exercises</h1>
-          {apiExercises.map((exerciseArray, i) => (
-            <div id='main-suggested-cnt' key={i}>
-              {exerciseArray.map((exercise, j) => (
-                <div key={j}className='apiExercise-cnt'>
+          <div id='main-suggested-cnt'>
+          {apiExercises.map((exercise, i) => (
+            <div key={i} className='apiExercise-cnt'>
 
-                  <div className='inner-apiExercise-cnt'>
-                    <h3>Type: </h3> 
-                    <p>{exercise.type}</p>
-                  </div>
+              <div className='inner-apiExercise-cnt'>
+                <h3>Type: </h3> 
+                <p>{exercise.type}</p>
+              </div>
 
-                  <div className='inner-apiExercise-cnt'>
-                    <h3>Muscle: </h3>
-                    <p> {exercise.muscle}</p>
-                  </div>
+              <div className='inner-apiExercise-cnt'>
+                <h3>Muscle: </h3>
+                <p> {exercise.muscle}</p>
+              </div>
 
-                  <div className='inner-apiExercise-cnt'>
-                    <h3>Difficulty: </h3>
-                    <p> {exercise.difficulty}</p>
-                  </div>
+              <div className='inner-apiExercise-cnt'>
+                <h3>Difficulty: </h3>
+                <p> {exercise.difficulty}</p>
+              </div>
 
-                  <div className='inner-apiExercise-cnt'>
-                    <h3>Name: </h3>
-                    <p> {exercise.name}</p>
-                  </div>
+              <div className='inner-apiExercise-cnt'>
+                <h3>Name: </h3>
+                <p> {exercise.name}</p>
+              </div>
 
-                  <div className='inner-apiExercise-cnt'>
-                    <h3>Equipment: </h3>
-                    <p> {exercise.equipment}</p>
-                  </div> 
+              <div className='inner-apiExercise-cnt'>
+                <h3>Equipment: </h3>
+                <p> {exercise.equipment}</p>
+              </div> 
 
-                  <div className='inner-apiExercise-cnt'>
-                    <h3>Instructions: </h3>
-                    <p> {exercise.instructions}</p>
-                  </div>
+              <div id='inner-apiExercise-cnt-instructions' className='inner-apiExercise-cnt'>
+                <h3>Instructions: </h3>
+                <p> {exercise.instructions}</p>
+              </div>
 
-                  <button className='login-signup-btn' onClick={() => setSelectedExercise(exercise)}>Pin Exercise</button>
-                </div>
-              ))}
+              <button id='pin-exercise-btn' className='login-signup-btn' onClick={() => setSelectedExercise(exercise)}>Pin Exercise</button>
             </div>
           ))}
+          </div>
         </div>
         </>
 
